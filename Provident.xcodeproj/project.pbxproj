@@ -10,6 +10,12 @@
 		65C139A6227DA8AA005BC016 /* Provident.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1399C227DA8AA005BC016 /* Provident.framework */; };
 		65C139AB227DA8AA005BC016 /* ProvidentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C139AA227DA8AA005BC016 /* ProvidentTests.swift */; };
 		65C139AD227DA8AA005BC016 /* Provident.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C1399F227DA8AA005BC016 /* Provident.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65ED275B227DAA4A00F0A545 /* Registrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2759227DAA4A00F0A545 /* Registrar.swift */; };
+		65ED275C227DAA4A00F0A545 /* ViewControllerRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED275A227DAA4A00F0A545 /* ViewControllerRegistry.swift */; };
+		65ED275E227DAA5500F0A545 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED275D227DAA5500F0A545 /* Resolver.swift */; };
+		65ED2761227DAA6000F0A545 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED275F227DAA6000F0A545 /* ServiceProvider.swift */; };
+		65ED2762227DAA6000F0A545 /* ServiceProviderCreationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2760227DAA6000F0A545 /* ServiceProviderCreationContext.swift */; };
+		65ED2764227DAA6700F0A545 /* ViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2763227DAA6700F0A545 /* ViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,12 @@
 		65C139A5227DA8AA005BC016 /* ProvidentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProvidentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C139AA227DA8AA005BC016 /* ProvidentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidentTests.swift; sourceTree = "<group>"; };
 		65C139AC227DA8AA005BC016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65ED2759227DAA4A00F0A545 /* Registrar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registrar.swift; sourceTree = "<group>"; };
+		65ED275A227DAA4A00F0A545 /* ViewControllerRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRegistry.swift; sourceTree = "<group>"; };
+		65ED275D227DAA5500F0A545 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
+		65ED275F227DAA6000F0A545 /* ServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		65ED2760227DAA6000F0A545 /* ServiceProviderCreationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProviderCreationContext.swift; sourceTree = "<group>"; };
+		65ED2763227DAA6700F0A545 /* ViewControllerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +105,7 @@
 		65ED2755227DA9A700F0A545 /* ViewControllerProvider */ = {
 			isa = PBXGroup;
 			children = (
+				65ED2763227DAA6700F0A545 /* ViewControllerProvider.swift */,
 			);
 			path = ViewControllerProvider;
 			sourceTree = "<group>";
@@ -100,6 +113,7 @@
 		65ED2756227DA9D600F0A545 /* Resolver */ = {
 			isa = PBXGroup;
 			children = (
+				65ED275D227DAA5500F0A545 /* Resolver.swift */,
 			);
 			path = Resolver;
 			sourceTree = "<group>";
@@ -107,6 +121,8 @@
 		65ED2757227DA9E800F0A545 /* ServiceProvider */ = {
 			isa = PBXGroup;
 			children = (
+				65ED275F227DAA6000F0A545 /* ServiceProvider.swift */,
+				65ED2760227DAA6000F0A545 /* ServiceProviderCreationContext.swift */,
 			);
 			path = ServiceProvider;
 			sourceTree = "<group>";
@@ -114,6 +130,8 @@
 		65ED2758227DAA2B00F0A545 /* Registry */ = {
 			isa = PBXGroup;
 			children = (
+				65ED2759227DAA4A00F0A545 /* Registrar.swift */,
+				65ED275A227DAA4A00F0A545 /* ViewControllerRegistry.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -180,6 +198,7 @@
 				TargetAttributes = {
 					65C1399B227DA8AA005BC016 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					65C139A4227DA8AA005BC016 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -226,6 +245,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65ED2761227DAA6000F0A545 /* ServiceProvider.swift in Sources */,
+				65ED2762227DAA6000F0A545 /* ServiceProviderCreationContext.swift in Sources */,
+				65ED275E227DAA5500F0A545 /* Resolver.swift in Sources */,
+				65ED2764227DAA6700F0A545 /* ViewControllerProvider.swift in Sources */,
+				65ED275B227DAA4A00F0A545 /* Registrar.swift in Sources */,
+				65ED275C227DAA4A00F0A545 /* ViewControllerRegistry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +398,7 @@
 		65C139B1227DA8AA005BC016 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -390,6 +416,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.cerihughes.Provident;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -398,6 +425,7 @@
 		65C139B2227DA8AA005BC016 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -423,6 +451,7 @@
 		65C139B4227DA8AA005BC016 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y56955G4Q8;
 				INFOPLIST_FILE = ProvidentTests/Info.plist;
@@ -441,6 +470,7 @@
 		65C139B5227DA8AA005BC016 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y56955G4Q8;
 				INFOPLIST_FILE = ProvidentTests/Info.plist;

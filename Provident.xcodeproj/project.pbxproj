@@ -71,6 +71,10 @@
 		65C1399E227DA8AA005BC016 /* Provident */ = {
 			isa = PBXGroup;
 			children = (
+				65ED2758227DAA2B00F0A545 /* Registry */,
+				65ED2756227DA9D600F0A545 /* Resolver */,
+				65ED2757227DA9E800F0A545 /* ServiceProvider */,
+				65ED2755227DA9A700F0A545 /* ViewControllerProvider */,
 				65C1399F227DA8AA005BC016 /* Provident.h */,
 				65C139A0227DA8AA005BC016 /* Info.plist */,
 			);
@@ -84,6 +88,34 @@
 				65C139AC227DA8AA005BC016 /* Info.plist */,
 			);
 			path = ProvidentTests;
+			sourceTree = "<group>";
+		};
+		65ED2755227DA9A700F0A545 /* ViewControllerProvider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllerProvider;
+			sourceTree = "<group>";
+		};
+		65ED2756227DA9D600F0A545 /* Resolver */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resolver;
+			sourceTree = "<group>";
+		};
+		65ED2757227DA9E800F0A545 /* ServiceProvider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ServiceProvider;
+			sourceTree = "<group>";
+		};
+		65ED2758227DAA2B00F0A545 /* Registry */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Registry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

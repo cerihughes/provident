@@ -31,21 +31,21 @@ open class Registry<T, C> {
 
     public init() {}
 
-    public func add(registryFunction: @escaping RegistryFunction) -> UUID {
+    open func add(registryFunction: @escaping RegistryFunction) -> UUID {
         let uuid = UUID()
         orderedFunctionUUIDs.append(uuid)
         orderedFunctions.append(registryFunction)
         return uuid
     }
 
-    public func add(registryFunctionWithContext: @escaping RegistryFunctionWithContext) -> UUID {
+    open func add(registryFunctionWithContext: @escaping RegistryFunctionWithContext) -> UUID {
         let uuid = UUID()
         orderedFunctionWithContextUUIDs.append(uuid)
         orderedFunctionsWithContext.append(registryFunctionWithContext)
         return uuid
     }
 
-    public func removeRegistryFunction(uuid: UUID) {
+    open func removeRegistryFunction(uuid: UUID) {
         if let index = orderedFunctionUUIDs.index(of: uuid) {
             _ = orderedFunctionUUIDs.remove(at: index)
             _ = orderedFunctions.remove(at: index)
@@ -56,7 +56,7 @@ open class Registry<T, C> {
         }
     }
 
-    public func createViewController(from token: T, context: C? = nil) -> UIViewController? {
+    open func createViewController(from token: T, context: C? = nil) -> UIViewController? {
         if let context = context {
             for function in orderedFunctionsWithContext {
                 if let result = function(token, context) {

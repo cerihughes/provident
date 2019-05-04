@@ -43,7 +43,7 @@ class RegistryTests: XCTestCase {
     }
 
     func testRegisterFunctionWithContext() {
-        let uuid = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 10))
+        let uuid = registry.add(registryFunction: createFunctionWithContext(limit: 10))
         XCTAssertNotNil(registry.createViewController(from: 1, context: "Things"))
 
         registry.removeRegistryFunction(uuid: uuid)
@@ -51,7 +51,7 @@ class RegistryTests: XCTestCase {
     }
 
     func testRegisterFunctionWithContext_withoutProvidingContext() {
-        let uuid = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 10))
+        let uuid = registry.add(registryFunction: createFunctionWithContext(limit: 10))
         XCTAssertNil(registry.createViewController(from: 1))
 
         registry.removeRegistryFunction(uuid: uuid)
@@ -74,8 +74,8 @@ class RegistryTests: XCTestCase {
     }
 
     func testRegisterFunctionWithContext_oneIsValid() {
-        let uuid1 = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 0))
-        let uuid2 = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 1))
+        let uuid1 = registry.add(registryFunction: createFunctionWithContext(limit: 0))
+        let uuid2 = registry.add(registryFunction: createFunctionWithContext(limit: 1))
 
         let vc = registry.createViewController(from: 1, context: "Things")
         XCTAssertNotNil(vc)
@@ -104,8 +104,8 @@ class RegistryTests: XCTestCase {
     }
 
     func testRegisterFunctionsWithContext_allValid_usesFirstRegistered() {
-        let uuid1 = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 0))
-        let uuid2 = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 1))
+        let uuid1 = registry.add(registryFunction: createFunctionWithContext(limit: 0))
+        let uuid2 = registry.add(registryFunction: createFunctionWithContext(limit: 1))
 
         let vc = registry.createViewController(from: 0, context: "Things")
         XCTAssertNotNil(vc)
@@ -119,7 +119,7 @@ class RegistryTests: XCTestCase {
     }
 
     func testRegisterMixedFunctions_functionsWithContextsReturnFirst() {
-        let uuid1 = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 0))
+        let uuid1 = registry.add(registryFunction: createFunctionWithContext(limit: 0))
         let uuid2 = registry.add(registryFunction: createFunction(limit: 0))
 
         var vc = registry.createViewController(from: 0, context: "Things")
@@ -132,8 +132,8 @@ class RegistryTests: XCTestCase {
     }
 
     func testRegisterMixedFunctions_allValid_usesFirstRegistered() {
-        let uuid1 = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 0))
-        let uuid2 = registry.add(registryFunctionWithContext: createFunctionWithContext(limit: 1))
+        let uuid1 = registry.add(registryFunction: createFunctionWithContext(limit: 0))
+        let uuid2 = registry.add(registryFunction: createFunctionWithContext(limit: 1))
         let uuid3 = registry.add(registryFunction: createFunction(limit: 0))
         let uuid4 = registry.add(registryFunction: createFunction(limit: 1))
 

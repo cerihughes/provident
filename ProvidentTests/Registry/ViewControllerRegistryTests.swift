@@ -1,6 +1,6 @@
 //
 //  ViewControllerRegistryTests.swift
-//  MadogTests
+//  ProvidentTests
 //
 //  Created by Ceri Hughes on 03/05/2019.
 //  Copyright © 2019 Ceri Hughes. All rights reserved.

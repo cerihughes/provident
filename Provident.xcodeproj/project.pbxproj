@@ -71,8 +71,8 @@
 		65C13992227DA8AA005BC016 = {
 			isa = PBXGroup;
 			children = (
-				65C1399E227DA8AA005BC016 /* Provident */,
-				65C139A9227DA8AA005BC016 /* ProvidentTests */,
+				65C1399E227DA8AA005BC016 /* Source */,
+				65C139A9227DA8AA005BC016 /* Tests */,
 				65C1399D227DA8AA005BC016 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,7 +86,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65C1399E227DA8AA005BC016 /* Provident */ = {
+		65C1399E227DA8AA005BC016 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				65ED2758227DAA2B00F0A545 /* Registry */,
@@ -96,10 +96,10 @@
 				65C1399F227DA8AA005BC016 /* Provident.h */,
 				65C139A0227DA8AA005BC016 /* Info.plist */,
 			);
-			path = Provident;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		65C139A9227DA8AA005BC016 /* ProvidentTests */ = {
+		65C139A9227DA8AA005BC016 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				65ED2765227DAAAC00F0A545 /* Registry */,
@@ -107,7 +107,7 @@
 				65ED276B227DAAF100F0A545 /* TestData.swift */,
 				65C139AC227DA8AA005BC016 /* Info.plist */,
 			);
-			path = ProvidentTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		65ED2755227DA9A700F0A545 /* ViewControllerProvider */ = {
@@ -434,7 +434,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Provident/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,7 +461,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Provident/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -482,7 +482,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y56955G4Q8;
-				INFOPLIST_FILE = ProvidentTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -501,7 +501,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y56955G4Q8;
-				INFOPLIST_FILE = ProvidentTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,15 +7,15 @@
 //
 
 import Foundation
-import Madog
+import Provident
 
 class TestViewControllerProvider: ViewControllerProvider<String, Void> {
     var registered = false, unregistered = false
     var capturedServiceProviders: [String : ServiceProvider]? = nil
-    override func register(with registry: ViewControllerRegistry<String, Void>) {
+    override func register(with registry: Registry<String, Void>) {
         registered = true
     }
-    override func unregister(from registry: ViewControllerRegistry<String, Void>) {
+    override func unregister(from registry: Registry<String, Void>) {
         unregistered = true
     }
     override func configure(with serviceProviders: [String : ServiceProvider]) {

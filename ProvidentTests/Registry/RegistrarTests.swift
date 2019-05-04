@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import Madog
+@testable import Provident
 
 class RegistrarTests: XCTestCase {
 
@@ -17,7 +17,7 @@ class RegistrarTests: XCTestCase {
 
     // MARK: Test Data
     private var resolver: TestResolver!
-    private var registry: ViewControllerRegistry<String, Void>!
+    private var registry: Registry<String, Void>!
 
     override func setUp() {
         super.setUp()
@@ -25,7 +25,7 @@ class RegistrarTests: XCTestCase {
         let testServiceProviderCreationFunctions: [(ServiceProviderCreationContext) -> ServiceProvider] = [TestServiceProviderFactory.createServiceProvider]
         resolver = TestResolver(testViewControllerProviderCreationFunctions: testViewControllerProviderCreationFunctions,
                                 testServiceProviderCreationFunctions: testServiceProviderCreationFunctions)
-        registry = ViewControllerRegistry()
+        registry = Registry()
         registrar = Registrar(registry: registry)
     }
 

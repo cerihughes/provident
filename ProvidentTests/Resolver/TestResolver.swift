@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Madog
+import Provident
 
 class TestResolver: Resolver<String, Void> {
     private let testViewControllerProviderCreationFunctions: [() -> ViewControllerProvider<String, Void>]

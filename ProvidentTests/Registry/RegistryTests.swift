@@ -8,16 +8,16 @@
 
 import XCTest
 
-@testable import Madog
+@testable import Provident
 
 class RegistryTests: XCTestCase {
 
-    private var registry: ViewControllerRegistry<Int, String>!
+    private var registry: Registry<Int, String>!
 
     override func setUp() {
         super.setUp()
 
-        registry = ViewControllerRegistry()
+        registry = Registry()
     }
 
     override func tearDown() {

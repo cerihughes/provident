@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Registrar<T, C> {
+open class Registrar<T, C> {
     public let registry: Registry<T, C>
 
     public private(set) var serviceProviders = [String : ServiceProvider]()
@@ -22,7 +22,7 @@ public class Registrar<T, C> {
         unregisterViewControllerProviders()
     }
 
-    public func resolve(resolver: Resolver<T, C>, launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
+    open func resolve(resolver: Resolver<T, C>, launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
         let context = ServiceProviderCreationContextImplementation()
         context.launchOptions = launchOptions
         createServiceProviders(functions: resolver.serviceProviderCreationFunctions(), context: context)

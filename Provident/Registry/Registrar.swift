@@ -9,12 +9,12 @@
 import UIKit
 
 public class Registrar<T, C> {
-    public let registry: ViewControllerRegistry<T, C>
+    public let registry: Registry<T, C>
 
     public private(set) var serviceProviders = [String : ServiceProvider]()
     internal private(set) var viewControllerProviders = [ViewControllerProvider<T, C>]()
 
-    public init(registry: ViewControllerRegistry<T, C>) {
+    public init(registry: Registry<T, C>) {
         self.registry = registry
     }
 

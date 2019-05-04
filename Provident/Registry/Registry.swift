@@ -1,5 +1,5 @@
 //
-//  ViewControllerRegistry.swift
+//  Registry.swift
 //  Provident
 //
 //  Created by Ceri Hughes on 23/11/2018.
@@ -13,13 +13,13 @@ import UIKit
 ///
 /// The registry works by registering a number of functions. To retrieve a VC, the Token is passed into all
 /// registered functions along with an optional Context <C>. The context isn't "optional" in the traditional (C?) sense -
-/// instead there are 2 creation functions - 1 that uses a C, and one that doesn't. The 1st non-nil VC that comes back
-/// is used as the return value.
+/// instead there are 2 creation functions - 1 that uses C, and one that doesn't. The 1st non-nil VC that comes back is
+/// used as the return value.
 ///
 /// Note that registrants should make sure they don't "overlap" - if more than 1 registrant could potentially return a
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
-open class ViewControllerRegistry<T, C> {
+open class Registry<T, C> {
     public typealias RegistryFunction = (T) -> UIViewController?
     public typealias RegistryFunctionWithContext = (T, C) -> UIViewController?
 

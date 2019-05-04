@@ -1,5 +1,5 @@
 //
-//  ViewControllerRegistryTests.swift
+//  RegistryTests.swift
 //  ProvidentTests
 //
 //  Created by Ceri Hughes on 03/05/2019.
@@ -10,7 +10,7 @@ import XCTest
 
 @testable import Madog
 
-class ViewControllerRegistryTests: XCTestCase {
+class RegistryTests: XCTestCase {
 
     private var registry: ViewControllerRegistry<Int, String>!
 
@@ -154,7 +154,7 @@ class ViewControllerRegistryTests: XCTestCase {
         registry.removeRegistryFunction(uuid: uuid4)
     }}
 
-private extension ViewControllerRegistryTests {
+private extension RegistryTests {
 
     // MARK: - Test functions
 

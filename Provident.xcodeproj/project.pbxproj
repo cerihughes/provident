@@ -10,12 +10,12 @@
 		65C139A6227DA8AA005BC016 /* Provident.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1399C227DA8AA005BC016 /* Provident.framework */; };
 		65C139AD227DA8AA005BC016 /* Provident.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C1399F227DA8AA005BC016 /* Provident.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65ED275B227DAA4A00F0A545 /* Registrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2759227DAA4A00F0A545 /* Registrar.swift */; };
-		65ED275C227DAA4A00F0A545 /* ViewControllerRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED275A227DAA4A00F0A545 /* ViewControllerRegistry.swift */; };
+		65ED275C227DAA4A00F0A545 /* Registry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED275A227DAA4A00F0A545 /* Registry.swift */; };
 		65ED275E227DAA5500F0A545 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED275D227DAA5500F0A545 /* Resolver.swift */; };
 		65ED2761227DAA6000F0A545 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED275F227DAA6000F0A545 /* ServiceProvider.swift */; };
 		65ED2762227DAA6000F0A545 /* ServiceProviderCreationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2760227DAA6000F0A545 /* ServiceProviderCreationContext.swift */; };
 		65ED2764227DAA6700F0A545 /* ViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2763227DAA6700F0A545 /* ViewControllerProvider.swift */; };
-		65ED2769227DAAE400F0A545 /* ViewControllerRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2767227DAAE400F0A545 /* ViewControllerRegistryTests.swift */; };
+		65ED2769227DAAE400F0A545 /* RegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2767227DAAE400F0A545 /* RegistryTests.swift */; };
 		65ED276A227DAAE400F0A545 /* RegistrarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2768227DAAE400F0A545 /* RegistrarTests.swift */; };
 		65ED276D227DAAF100F0A545 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED276B227DAAF100F0A545 /* TestData.swift */; };
 		65ED276E227DAAF100F0A545 /* TestResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED276C227DAAF100F0A545 /* TestResolver.swift */; };
@@ -38,12 +38,12 @@
 		65C139A5227DA8AA005BC016 /* ProvidentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProvidentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C139AC227DA8AA005BC016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65ED2759227DAA4A00F0A545 /* Registrar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registrar.swift; sourceTree = "<group>"; };
-		65ED275A227DAA4A00F0A545 /* ViewControllerRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRegistry.swift; sourceTree = "<group>"; };
+		65ED275A227DAA4A00F0A545 /* Registry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registry.swift; sourceTree = "<group>"; };
 		65ED275D227DAA5500F0A545 /* Resolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		65ED275F227DAA6000F0A545 /* ServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		65ED2760227DAA6000F0A545 /* ServiceProviderCreationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProviderCreationContext.swift; sourceTree = "<group>"; };
 		65ED2763227DAA6700F0A545 /* ViewControllerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProvider.swift; sourceTree = "<group>"; };
-		65ED2767227DAAE400F0A545 /* ViewControllerRegistryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerRegistryTests.swift; sourceTree = "<group>"; };
+		65ED2767227DAAE400F0A545 /* RegistryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistryTests.swift; sourceTree = "<group>"; };
 		65ED2768227DAAE400F0A545 /* RegistrarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrarTests.swift; sourceTree = "<group>"; };
 		65ED276B227DAAF100F0A545 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		65ED276C227DAAF100F0A545 /* TestResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResolver.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				65ED2759227DAA4A00F0A545 /* Registrar.swift */,
-				65ED275A227DAA4A00F0A545 /* ViewControllerRegistry.swift */,
+				65ED275A227DAA4A00F0A545 /* Registry.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				65ED2768227DAAE400F0A545 /* RegistrarTests.swift */,
-				65ED2767227DAAE400F0A545 /* ViewControllerRegistryTests.swift */,
+				65ED2767227DAAE400F0A545 /* RegistryTests.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 				65ED275E227DAA5500F0A545 /* Resolver.swift in Sources */,
 				65ED2764227DAA6700F0A545 /* ViewControllerProvider.swift in Sources */,
 				65ED275B227DAA4A00F0A545 /* Registrar.swift in Sources */,
-				65ED275C227DAA4A00F0A545 /* ViewControllerRegistry.swift in Sources */,
+				65ED275C227DAA4A00F0A545 /* Registry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65ED276A227DAAE400F0A545 /* RegistrarTests.swift in Sources */,
-				65ED2769227DAAE400F0A545 /* ViewControllerRegistryTests.swift in Sources */,
+				65ED2769227DAAE400F0A545 /* RegistryTests.swift in Sources */,
 				65ED276E227DAAF100F0A545 /* TestResolver.swift in Sources */,
 				65ED276D227DAAF100F0A545 /* TestData.swift in Sources */,
 			);

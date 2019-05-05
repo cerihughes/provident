@@ -3,12 +3,9 @@ osx_image: xcode10.2
 
 env:
   global:
-    - LANG=en_US.UTF-8
-    - LC_ALL=en_US.UTF-8
     - PROJECT_NAME="Provident.xcodeproj"
     - SCHEME_IOS_FRAMEWORK="Provident"
     - IOS_SDK=iphonesimulator12.2
-    - TVOS_SDK=appletvsimulator12.2
   matrix:
     - DESTINATION="OS=12.2,name=iPhone X" SCHEME="$SCHEME_IOS_FRAMEWORK" SDK="$IOS_SDK"
 

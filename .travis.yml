@@ -1,10 +1,6 @@
 language: swift
 osx_image: xcode10.2
 
-cache:
-  directories:
-  - Carthage
-
 env:
   global:
     - LANG=en_US.UTF-8
@@ -17,12 +13,7 @@ env:
     - DESTINATION="OS=12.2,name=iPhone X" SCHEME="$SCHEME_IOS_FRAMEWORK" SDK="$IOS_SDK"
 
 before_install:
-  - brew install carthage || true
-  - brew outdated carthage || brew upgrade carthage
   - gem install xcpretty-travis-formatter --quiet
-
-before_script:
-  - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
 
 script:
   - set -o pipefail

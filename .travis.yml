@@ -19,7 +19,7 @@ env:
 before_install:
   - brew install carthage || true
   - brew outdated carthage || brew upgrade carthage
-  - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty-travis-formatter --quiet
 
 before_script:
   - carthage bootstrap --platform iOS --no-use-binaries --cache-builds

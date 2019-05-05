@@ -1,0 +1,18 @@
+language: swift
+osx_image: xcode10.2
+
+env:
+  global:
+    - PROJECT_NAME="Provident.xcodeproj"
+    - SCHEME_IOS_FRAMEWORK="Provident"
+    - IOS_SDK=iphonesimulator12.2
+  matrix:
+    - DESTINATION="OS=12.2,name=iPhone X" SCHEME="$SCHEME_IOS_FRAMEWORK" SDK="$IOS_SDK"
+
+before_install:
+  - gem install xcpretty-travis-formatter --quiet
+
+script:
+  - set -o pipefail
+  - xcodebuild clean test -project "$PROJECT_NAME" -scheme "$SCHEME" -destination "$DESTINATION" -sdk "$SDK" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
+  

@@ -8,9 +8,9 @@
 
 import UIKit
 
-public protocol RegistryDelegate {
-    func registry(_ registry: Registry<Any, Any>, didCreateViewController: UIViewController, from token: Any)
-    func registry(_ registry: Registry<Any, Any>, didFailToCreateViewControllerFrom token: Any)
+public protocol RegistryDelegate: AnyObject {
+    func registry(_ registry: Registry<Any, Any>, didCreateViewController: UIViewController, from token: Any, context: Any?)
+    func registry(_ registry: Registry<Any, Any>, didFailToCreateViewControllerFrom token: Any, context: Any?)
 }
 
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to uniquely
@@ -34,7 +34,7 @@ open class Registry<T, C> {
     private var orderedFunctionWithContextUUIDs = [UUID]()
     private var orderedFunctionsWithContext = [RegistryFunctionWithContext]()
 
-    public var delegate: RegistryDelegate?
+    public weak var delegate: RegistryDelegate?
 
     public init() {}
 
@@ -68,7 +68,7 @@ open class Registry<T, C> {
             for function in orderedFunctionsWithContext {
                 if let result = function(token, context) {
                     if let registry = self as? Registry<Any, Any> {
-                        delegate?.registry(registry, didCreateViewController: result, from: token)
+                        delegate?.registry(registry, didCreateViewController: result, from: token, context: context)
                     }
                     return result
                 }
@@ -78,7 +78,7 @@ open class Registry<T, C> {
         for function in orderedFunctions {
             if let result = function(token) {
                 if let registry = self as? Registry<Any, Any> {
-                    delegate?.registry(registry, didCreateViewController: result, from: token)
+                    delegate?.registry(registry, didCreateViewController: result, from: token, context: nil)
                 }
                 return result
             }

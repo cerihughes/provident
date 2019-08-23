@@ -10,5 +10,5 @@ import Foundation
 
 open class ServiceProvider {
     public var name: String = "Default"
-    public required init(context: ServiceProviderCreationContext) {}
+    public init(context: ServiceProviderCreationContext) {}
 }

@@ -8,6 +8,11 @@
 
 import UIKit
 
+public protocol RegistryDelegate {
+    func registry(_ registry: Registry<Any, Any>, didCreateViewController: UIViewController, from token: Any)
+    func registry(_ registry: Registry<Any, Any>, didFailToCreateViewControllerFrom token: Any)
+}
+
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to uniquely
 /// identify any VC, and also provide any data that the VC needs to be constructed.
 ///
@@ -28,6 +33,8 @@ open class Registry<T, C> {
 
     private var orderedFunctionWithContextUUIDs = [UUID]()
     private var orderedFunctionsWithContext = [RegistryFunctionWithContext]()
+
+    public var delegate: RegistryDelegate?
 
     public init() {}
 
@@ -60,6 +67,9 @@ open class Registry<T, C> {
         if let context = context {
             for function in orderedFunctionsWithContext {
                 if let result = function(token, context) {
+                    if let registry = self as? Registry<Any, Any> {
+                        delegate?.registry(registry, didCreateViewController: result, from: token)
+                    }
                     return result
                 }
             }
@@ -67,6 +77,9 @@ open class Registry<T, C> {
 
         for function in orderedFunctions {
             if let result = function(token) {
+                if let registry = self as? Registry<Any, Any> {
+                    delegate?.registry(registry, didCreateViewController: result, from: token)
+                }
                 return result
             }
         }

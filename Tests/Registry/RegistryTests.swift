@@ -184,20 +184,20 @@ class RegistryTests: XCTestCase {
         XCTAssertEqual(delegate.successfulCreations.count, 2)
 
         XCTAssertEqual(delegate.successfulCreations[0].0, vc1)
-        XCTAssertEqual(delegate.successfulCreations[0].1 as! Int, 1)
+        XCTAssertEqual(delegate.successfulCreations[0].1, 1)
         XCTAssertNil(delegate.successfulCreations[0].2)
 
         XCTAssertEqual(delegate.successfulCreations[1].0, vc2)
-        XCTAssertEqual(delegate.successfulCreations[1].1 as! Int, 1)
-        XCTAssertEqual(delegate.successfulCreations[1].2 as! String, "Things")
+        XCTAssertEqual(delegate.successfulCreations[1].1, 1)
+        XCTAssertEqual(delegate.successfulCreations[1].2, "Things")
 
         XCTAssertEqual(delegate.unsuccessfulCreations.count, 2)
 
-        XCTAssertEqual(delegate.unsuccessfulCreations[0].0 as! Int, 11)
+        XCTAssertEqual(delegate.unsuccessfulCreations[0].0, 11)
         XCTAssertNil(delegate.unsuccessfulCreations[0].1)
 
-        XCTAssertEqual(delegate.unsuccessfulCreations[1].0 as! Int, 11)
-        XCTAssertEqual(delegate.unsuccessfulCreations[1].1 as! String, "Things")
+        XCTAssertEqual(delegate.unsuccessfulCreations[1].0, 11)
+        XCTAssertEqual(delegate.unsuccessfulCreations[1].1, "Things")
 
         registry.removeRegistryFunction(uuid: uuid1)
         registry.removeRegistryFunction(uuid: uuid2)
@@ -234,14 +234,14 @@ private extension RegistryTests {
 }
 
 private class RegistryTests_RegistryDelegate: RegistryDelegate {
-    var successfulCreations = [(UIViewController, Any, Any?)]()
-    var unsuccessfulCreations = [(Any, Any?)]()
+    var successfulCreations = [(UIViewController, Int, String?)]()
+    var unsuccessfulCreations = [(Int, String?)]()
 
     func registryDidCreateViewController(_ viewController: UIViewController, from token: Any, context: Any?) {
-        successfulCreations.append((viewController, token, context))
+        successfulCreations.append((viewController, token as! Int, context as! String?))
     }
 
     func registryDidNotCreateViewControllerFrom(_ token: Any, context: Any?) {
-        unsuccessfulCreations.append((token, context))
+        unsuccessfulCreations.append((token as! Int, context as! String?))
     }
 }

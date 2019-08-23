@@ -24,7 +24,7 @@ class TestViewControllerProvider: ViewControllerProvider<String, Void> {
 }
 
 class TestServiceProvider: ServiceProvider {
-    required init(context: ServiceProviderCreationContext) {
+    override init(context: ServiceProviderCreationContext) {
         super.init(context: context)
         name = String(describing: TestServiceProvider.self)
     }

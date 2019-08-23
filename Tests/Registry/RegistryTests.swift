@@ -152,7 +152,57 @@ class RegistryTests: XCTestCase {
         vc = registry.createViewController(from: 0, context: "Things")
         XCTAssertEqual(vc!.title, "function 1")
         registry.removeRegistryFunction(uuid: uuid4)
-    }}
+    }
+
+    func testRegistryDelegateHeldWeakly() {
+        var delegate: RegistryTests_RegistryDelegate? = RegistryTests_RegistryDelegate()
+        registry.delegate = delegate
+
+        XCTAssertNotNil(registry.delegate)
+
+        delegate = nil
+
+        XCTAssertNil(registry.delegate)
+    }
+
+    func testRegistryDelegate() {
+        let delegate = RegistryTests_RegistryDelegate()
+        registry.delegate = delegate
+
+        let uuid1 = registry.add(registryFunction: createFunction(limit: 10))
+        let uuid2 = registry.add(registryFunction: createFunctionWithContext(limit: 10))
+
+        let vc1 = registry.createViewController(from: 1)
+        let vc2 = registry.createViewController(from: 1, context: "Things")
+        let vc3 = registry.createViewController(from: 11)
+        let vc4 = registry.createViewController(from: 11, context: "Things")
+        XCTAssertNotNil(vc1)
+        XCTAssertNotNil(vc2)
+        XCTAssertNil(vc3)
+        XCTAssertNil(vc4)
+
+        XCTAssertEqual(delegate.successfulCreations.count, 2)
+
+        XCTAssertEqual(delegate.successfulCreations[0].0, vc1)
+        XCTAssertEqual(delegate.successfulCreations[0].1 as! Int, 1)
+        XCTAssertNil(delegate.successfulCreations[0].2)
+
+        XCTAssertEqual(delegate.successfulCreations[1].0, vc2)
+        XCTAssertEqual(delegate.successfulCreations[1].1 as! Int, 1)
+        XCTAssertEqual(delegate.successfulCreations[1].2 as! String, "Things")
+
+        XCTAssertEqual(delegate.unsuccessfulCreations.count, 2)
+
+        XCTAssertEqual(delegate.unsuccessfulCreations[0].0 as! Int, 11)
+        XCTAssertNil(delegate.unsuccessfulCreations[0].1)
+
+        XCTAssertEqual(delegate.unsuccessfulCreations[1].0 as! Int, 11)
+        XCTAssertEqual(delegate.unsuccessfulCreations[1].1 as! String, "Things")
+
+        registry.removeRegistryFunction(uuid: uuid1)
+        registry.removeRegistryFunction(uuid: uuid2)
+    }
+}
 
 private extension RegistryTests {
 
@@ -180,5 +230,18 @@ private extension RegistryTests {
             vc.title = "functionWithContext \(limit)"
             return vc
         }
+    }
+}
+
+private class RegistryTests_RegistryDelegate: RegistryDelegate {
+    var successfulCreations = [(UIViewController, Any, Any?)]()
+    var unsuccessfulCreations = [(Any, Any?)]()
+
+    func registryDidCreateViewController(_ viewController: UIViewController, from token: Any, context: Any?) {
+        successfulCreations.append((viewController, token, context))
+    }
+
+    func registryDidNotCreateViewControllerFrom(_ token: Any, context: Any?) {
+        unsuccessfulCreations.append((token, context))
     }
 }

@@ -1,2 +1,2 @@
-excluded:
-  - Tests
+included:
+  - Source

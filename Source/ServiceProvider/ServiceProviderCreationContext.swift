@@ -9,9 +9,9 @@
 import UIKit
 
 public protocol ServiceProviderCreationContext {
-    var launchOptions: [UIApplication.LaunchOptionsKey : Any]? {get}
+    var launchOptions: [UIApplication.LaunchOptionsKey: Any]? { get }
 }
 
 internal class ServiceProviderCreationContextImplementation: ServiceProviderCreationContext {
-    internal var launchOptions: [UIApplication.LaunchOptionsKey : Any]?
+    internal var launchOptions: [UIApplication.LaunchOptionsKey: Any]?
 }

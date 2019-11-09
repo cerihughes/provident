@@ -11,14 +11,16 @@ import Provident
 
 class TestViewControllerProvider: ViewControllerProvider<String, Void> {
     var registered = false, unregistered = false
-    var capturedServiceProviders: [String : ServiceProvider]? = nil
-    override func register(with registry: Registry<String, Void>) {
+    var capturedServiceProviders: [String: ServiceProvider]?
+    override func register(with _: Registry<String, Void>) {
         registered = true
     }
-    override func unregister(from registry: Registry<String, Void>) {
+
+    override func unregister(from _: Registry<String, Void>) {
         unregistered = true
     }
-    override func configure(with serviceProviders: [String : ServiceProvider]) {
+
+    override func configure(with serviceProviders: [String: ServiceProvider]) {
         capturedServiceProviders = serviceProviders
     }
 }

@@ -11,9 +11,7 @@ env:
 
 before_install:
   - gem install xcpretty-travis-formatter --quiet
-
-install:
-  - ./install_swiftlint.sh
+  - brew update && brew install swiftlint
 
 script:
   - set -o pipefail

@@ -12,8 +12,12 @@ env:
 before_install:
   - gem install xcpretty-travis-formatter --quiet
 
+install:
+  - ./install_swiftlint.sh
+
 script:
   - set -o pipefail
+  - swiftlint
   - xcodebuild clean test -project "$PROJECT_NAME" -scheme "$SCHEME" -destination "$DESTINATION" -sdk "$SDK" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
 
 after_success:

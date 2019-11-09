@@ -11,7 +11,6 @@ import XCTest
 @testable import Provident
 
 class RegistryTests: XCTestCase {
-
     private var registry: Registry<Int, String>!
 
     override func setUp() {
@@ -205,7 +204,6 @@ class RegistryTests: XCTestCase {
 }
 
 private extension RegistryTests {
-
     // MARK: - Test functions
 
     func createFunction(limit: Int) -> (Int) -> UIViewController? {
@@ -221,7 +219,7 @@ private extension RegistryTests {
     }
 
     func createFunctionWithContext(limit: Int) -> (Int, String) -> UIViewController? {
-        return { token, context in
+        return { token, _ in
             guard token <= limit else {
                 return nil
             }

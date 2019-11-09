@@ -11,11 +11,12 @@ import XCTest
 @testable import Provident
 
 class RegistrarTests: XCTestCase {
-
     // MARK: CUT
+
     private var registrar: Registrar<String, Void>!
 
     // MARK: Test Data
+
     private var resolver: TestResolver!
     private var registry: Registry<String, Void>!
 

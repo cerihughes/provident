@@ -53,11 +53,11 @@ open class Registry<T, C> {
     }
 
     public func removeRegistryFunction(uuid: UUID) {
-        if let index = orderedFunctionUUIDs.index(of: uuid) {
+        if let index = orderedFunctionUUIDs.firstIndex(of: uuid) {
             _ = orderedFunctionUUIDs.remove(at: index)
             _ = orderedFunctions.remove(at: index)
         }
-        if let index = orderedFunctionWithContextUUIDs.index(of: uuid) {
+        if let index = orderedFunctionWithContextUUIDs.firstIndex(of: uuid) {
             _ = orderedFunctionWithContextUUIDs.remove(at: index)
             _ = orderedFunctionsWithContext.remove(at: index)
         }

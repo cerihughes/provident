@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 /// Subclasses of Resolver should return arrays of functions that can create instances of ViewControllerProvider
 /// and ServiceProvider, (e.g.) by manually instantiating the required implementations, or maybe loading them using

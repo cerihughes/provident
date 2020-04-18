@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651A6381244B3A5D0038C227 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A6380244B3A5D0038C227 /* Platform.swift */; };
 		65C139A6227DA8AA005BC016 /* Provident.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C1399C227DA8AA005BC016 /* Provident.framework */; };
 		65C139AD227DA8AA005BC016 /* Provident.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C1399F227DA8AA005BC016 /* Provident.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65ED275B227DAA4A00F0A545 /* Registrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2759227DAA4A00F0A545 /* Registrar.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		651A6380244B3A5D0038C227 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		65C1399C227DA8AA005BC016 /* Provident.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Provident.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C1399F227DA8AA005BC016 /* Provident.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Provident.h; sourceTree = "<group>"; };
 		65C139A0227DA8AA005BC016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				65ED2757227DA9E800F0A545 /* ServiceProvider */,
 				65ED2755227DA9A700F0A545 /* ViewControllerProvider */,
 				65C1399F227DA8AA005BC016 /* Provident.h */,
+				651A6380244B3A5D0038C227 /* Platform.swift */,
 				65C139A0227DA8AA005BC016 /* Info.plist */,
 			);
 			path = Source;
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651A6381244B3A5D0038C227 /* Platform.swift in Sources */,
 				65ED2761227DAA6000F0A545 /* ServiceProvider.swift in Sources */,
 				65ED2762227DAA6000F0A545 /* ServiceProviderCreationContext.swift in Sources */,
 				65ED275E227DAA5500F0A545 /* Resolver.swift in Sources */,

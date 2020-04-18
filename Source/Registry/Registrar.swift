@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public class Registrar<T, C> {
     public let registry: Registry<T, C>
@@ -22,8 +22,8 @@ public class Registrar<T, C> {
         unregisterViewControllerProviders()
     }
 
-    public func resolve(resolver: Resolver<T, C>, launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
-        let context = ServiceProviderCreationContextImplementation()
+    public func resolve(resolver: Resolver<T, C>, launchOptions: LaunchOptions) {
+        let context = ServiceProviderCreationContextImplementation(launchOptions: launchOptions)
         context.launchOptions = launchOptions
         createServiceProviders(functions: resolver.serviceProviderCreationFunctions(), context: context)
         registerViewControllerProviders(functions: resolver.viewControllerProviderCreationFunctions())

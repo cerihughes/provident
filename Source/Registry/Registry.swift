@@ -6,10 +6,10 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public protocol RegistryDelegate: AnyObject {
-    func registryDidCreateViewController(_ viewController: UIViewController, from token: Any, context: Any?)
+    func registryDidCreateViewController(_ viewController: ViewController, from token: Any, context: Any?)
     func registryDidNotCreateViewControllerFrom(_ token: Any, context: Any?)
 }
 
@@ -25,8 +25,8 @@ public protocol RegistryDelegate: AnyObject {
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
 open class Registry<T, C> {
-    public typealias RegistryFunction = (T) -> UIViewController?
-    public typealias RegistryFunctionWithContext = (T, C) -> UIViewController?
+    public typealias RegistryFunction = (T) -> ViewController?
+    public typealias RegistryFunctionWithContext = (T, C) -> ViewController?
 
     private var orderedFunctionUUIDs = [UUID]()
     private var orderedFunctions = [RegistryFunction]()
@@ -63,7 +63,7 @@ open class Registry<T, C> {
         }
     }
 
-    public func createViewController(from token: T, context: C? = nil) -> UIViewController? {
+    public func createViewController(from token: T, context: C? = nil) -> ViewController? {
         if let context = context {
             for function in orderedFunctionsWithContext {
                 if let result = function(token, context) {

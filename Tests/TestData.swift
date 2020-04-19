@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 @testable import Provident
 

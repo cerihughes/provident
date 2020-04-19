@@ -7,21 +7,28 @@
 //
 
 import Foundation
-import Provident
+
+@testable import Provident
 
 class TestViewControllerProvider: ViewControllerProvider<String, Void> {
     var registered = false, unregistered = false
     var capturedServiceProviders: [String: ServiceProvider]?
-    override func register(with _: Registry<String, Void>) {
+    override func register(with registry: Registry<String, Void>) {
+        super.register(with: registry)
         registered = true
     }
 
-    override func unregister(from _: Registry<String, Void>) {
+    override func unregister(from registry: Registry<String, Void>) {
+        super.unregister(from: registry)
         unregistered = true
     }
 
     override func configure(with serviceProviders: [String: ServiceProvider]) {
         capturedServiceProviders = serviceProviders
+    }
+
+    override func createViewController(token: String, context: Void) -> UIViewController? {
+        return UIViewController(title: token)
     }
 }
 

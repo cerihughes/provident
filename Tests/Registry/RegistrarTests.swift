@@ -22,10 +22,11 @@ class RegistrarTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let testViewControllerProviderCreationFunctions: [() -> ViewControllerProvider<String, Void>] = [TestViewControllerProviderFactory.createViewControllerProvider]
-        let testServiceProviderCreationFunctions: [(ServiceProviderCreationContext) -> ServiceProvider] = [TestServiceProviderFactory.createServiceProvider]
-        resolver = TestResolver(testViewControllerProviderCreationFunctions: testViewControllerProviderCreationFunctions,
-                                testServiceProviderCreationFunctions: testServiceProviderCreationFunctions)
+
+        let testServiceProviderFunctions = [TestServiceProviderFactory.createServiceProvider]
+        let testViewControllerProviderFunctions = [TestViewControllerProviderFactory.createViewControllerProvider]
+        resolver = TestResolver(testServiceProviderFunctions: testServiceProviderFunctions,
+                                testViewControllerProviderFunctions: testViewControllerProviderFunctions)
         registry = Registry()
         registrar = Registrar(registry: registry)
     }
@@ -34,6 +35,7 @@ class RegistrarTests: XCTestCase {
         registrar = nil
         resolver = nil
         registry = nil
+
         super.tearDown()
     }
 
@@ -41,7 +43,7 @@ class RegistrarTests: XCTestCase {
         TestServiceProviderFactory.created = false
 
         XCTAssertEqual(registrar.serviceProviders.count, 0)
-        registrar.createServiceProviders(functions: resolver.serviceProviderCreationFunctions(), context: ServiceProviderCreationContextImplementation())
+        registrar.createServiceProviders(functions: resolver.serviceProviderFunctions(), context: ServiceProviderCreationContextImplementation())
 
         // Both factories create a service provider object with the same name, so we only get 1 object
         XCTAssertEqual(registrar.serviceProviders.count, 1)
@@ -53,7 +55,7 @@ class RegistrarTests: XCTestCase {
         TestViewControllerProviderFactory.created = false
 
         XCTAssertEqual(registrar.viewControllerProviders.count, 0)
-        registrar.registerViewControllerProviders(functions: resolver.viewControllerProviderCreationFunctions())
+        registrar.registerViewControllerProviders(functions: resolver.viewControllerProviderFunctions())
         XCTAssertEqual(registrar.viewControllerProviders.count, 1)
 
         XCTAssertTrue(TestViewControllerProviderFactory.created)

@@ -20,6 +20,8 @@
 		65ED276D227DAAF100F0A545 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED276B227DAAF100F0A545 /* TestData.swift */; };
 		65ED276E227DAAF100F0A545 /* TestResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED276C227DAAF100F0A545 /* TestResolver.swift */; };
 		F482D344244C698500F13FB1 /* RegistryVoidContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */; };
+		F482D346244C6E8300F13FB1 /* RegistryAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */; };
+		F482D348244C978C00F13FB1 /* UIViewController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		65ED276B227DAAF100F0A545 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		65ED276C227DAAF100F0A545 /* TestResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResolver.swift; sourceTree = "<group>"; };
 		F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryVoidContextTests.swift; sourceTree = "<group>"; };
+		F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryAPITests.swift; sourceTree = "<group>"; };
+		F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Testing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			children = (
 				65C139AC227DA8AA005BC016 /* Info.plist */,
 				65ED276B227DAAF100F0A545 /* TestData.swift */,
+				F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */,
 				65ED2765227DAAAC00F0A545 /* Registry */,
 				65ED2766227DAAC100F0A545 /* Resolver */,
 			);
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				65ED2768227DAAE400F0A545 /* RegistrarTests.swift */,
+				F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */,
 				65ED2767227DAAE400F0A545 /* RegistryTests.swift */,
 				F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */,
 			);
@@ -289,6 +295,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				65ED276A227DAAE400F0A545 /* RegistrarTests.swift in Sources */,
+				F482D348244C978C00F13FB1 /* UIViewController+Testing.swift in Sources */,
+				F482D346244C6E8300F13FB1 /* RegistryAPITests.swift in Sources */,
 				65ED2769227DAAE400F0A545 /* RegistryTests.swift in Sources */,
 				65ED276E227DAAF100F0A545 /* TestResolver.swift in Sources */,
 				F482D344244C698500F13FB1 /* RegistryVoidContextTests.swift in Sources */,

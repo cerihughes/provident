@@ -20,14 +20,14 @@ import UIKit
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
 open class Registry<T, C> {
-    public typealias RegistryFunction = (T, C) -> UIViewController?
+    typealias RegistryFunction = (T, C) -> UIViewController?
 
     private var orderedFunctionUUIDs = [UUID]()
     private var orderedFunctions = [RegistryFunction]()
 
     public init() {}
 
-    public func add(registryFunction: @escaping RegistryFunction) -> UUID {
+    func add(registryFunction: @escaping RegistryFunction) -> UUID {
         let uuid = UUID()
         orderedFunctionUUIDs.append(uuid)
         orderedFunctions.append(registryFunction)
@@ -35,7 +35,7 @@ open class Registry<T, C> {
     }
 
     @discardableResult
-    public func removeRegistryFunction(uuid: UUID) -> Bool {
+    func removeRegistryFunction(uuid: UUID) -> Bool {
         guard let index = orderedFunctionUUIDs.firstIndex(of: uuid) else { return false }
 
         _ = orderedFunctionUUIDs.remove(at: index)

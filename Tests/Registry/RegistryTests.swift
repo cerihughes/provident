@@ -153,9 +153,7 @@ class RegistryTests: XCTestCase {
                 title = "function \(limit)"
             }
 
-            let vc = UIViewController()
-            vc.title = title
-            return vc
+            return UIViewController(title: title)
         }
     }
 }

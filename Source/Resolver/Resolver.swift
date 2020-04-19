@@ -13,6 +13,6 @@ import UIKit
 /// the objc-runtime (currently not working as ViewControllerProvider is a swift class that uses generics).
 open class Resolver<T, C> {
     public init() {}
-    open func viewControllerProviderCreationFunctions() -> [() -> ViewControllerProvider<T, C>] { return [] }
-    open func serviceProviderCreationFunctions() -> [(ServiceProviderCreationContext) -> ServiceProvider] { return [] }
+    open func serviceProviderFunctions() -> [Registrar<T, C>.ServiceProviderFunction] { return [] }
+    open func viewControllerProviderFunctions() -> [Registrar<T, C>.ViewControllerProviderFunction] { return [] }
 }

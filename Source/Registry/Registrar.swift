@@ -9,6 +9,9 @@
 import UIKit
 
 public class Registrar<T, C> {
+    public typealias ServiceProviderFunction = (ServiceProviderCreationContext) -> ServiceProvider
+    public typealias ViewControllerProviderFunction = () -> ViewControllerProvider<T, C>
+
     public let registry: Registry<T, C>
 
     public private(set) var serviceProviders = [String: ServiceProvider]()
@@ -22,15 +25,21 @@ public class Registrar<T, C> {
         unregisterViewControllerProviders()
     }
 
-    public func resolve(resolver: Resolver<T, C>, launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
+    public func resolve(serviceProviderFunctions: [ServiceProviderFunction],
+                        viewControllerProviderFunctions: [ViewControllerProviderFunction],
+                        launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
         let context = ServiceProviderCreationContextImplementation()
         context.launchOptions = launchOptions
-        createServiceProviders(functions: resolver.serviceProviderCreationFunctions(), context: context)
-        registerViewControllerProviders(functions: resolver.viewControllerProviderCreationFunctions())
+        createServiceProviders(functions: serviceProviderFunctions, context: context)
+        registerViewControllerProviders(functions: viewControllerProviderFunctions)
     }
 
-    internal func createServiceProviders(functions: [(ServiceProviderCreationContext) -> ServiceProvider],
-                                         context: ServiceProviderCreationContext) {
+    public func resolve(resolver: Resolver<T, C>, launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
+        resolve(serviceProviderFunctions: resolver.serviceProviderFunctions(),
+                viewControllerProviderFunctions: resolver.viewControllerProviderFunctions())
+    }
+
+    internal func createServiceProviders(functions: [ServiceProviderFunction], context: ServiceProviderCreationContext) {
         for function in functions {
             let serviceProvider = function(context)
             let name = serviceProvider.name
@@ -38,7 +47,7 @@ public class Registrar<T, C> {
         }
     }
 
-    internal func registerViewControllerProviders(functions: [() -> ViewControllerProvider<T, C>]) {
+    internal func registerViewControllerProviders(functions: [ViewControllerProviderFunction]) {
         for function in functions {
             let viewControllerProvider = function()
             viewControllerProvider.register(with: registry)

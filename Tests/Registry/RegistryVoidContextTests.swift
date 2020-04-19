@@ -2,7 +2,7 @@
 //  RegistryVoidContextTests.swift
 //  ProvidentTests
 //
-//  Created by Home on 19/04/2020.
+//  Created by Ceri Hughes on 19/04/2020.
 //  Copyright © 2020 Ceri Hughes. All rights reserved.
 //
 
@@ -71,9 +71,7 @@ class RegistryVoidContextTests: XCTestCase {
                 return nil
             }
 
-            let vc = UIViewController()
-            vc.title = "function \(limit)"
-            return vc
+            return UIViewController(title: "function \(limit)")
         }
     }
 }

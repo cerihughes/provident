@@ -30,6 +30,10 @@ open class Registry<T, C> {
         functions.append(registryFunction)
     }
 
+    func reset() {
+        functions.removeAll()
+    }
+
     public func createViewController(from token: T, context: C) -> UIViewController? {
         for function in functions {
             if let result = function(token, context) {

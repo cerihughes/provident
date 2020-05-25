@@ -22,29 +22,16 @@ import UIKit
 open class Registry<T, C> {
     typealias RegistryFunction = (T, C) -> UIViewController?
 
-    private var orderedFunctionUUIDs = [UUID]()
-    private var orderedFunctions = [RegistryFunction]()
+    private var functions = [RegistryFunction]()
 
     public init() {}
 
-    func add(registryFunction: @escaping RegistryFunction) -> UUID {
-        let uuid = UUID()
-        orderedFunctionUUIDs.append(uuid)
-        orderedFunctions.append(registryFunction)
-        return uuid
-    }
-
-    @discardableResult
-    func removeRegistryFunction(uuid: UUID) -> Bool {
-        guard let index = orderedFunctionUUIDs.firstIndex(of: uuid) else { return false }
-
-        _ = orderedFunctionUUIDs.remove(at: index)
-        _ = orderedFunctions.remove(at: index)
-        return true
+    func add(registryFunction: @escaping RegistryFunction) {
+        functions.append(registryFunction)
     }
 
     public func createViewController(from token: T, context: C) -> UIViewController? {
-        for function in orderedFunctions {
+        for function in functions {
             if let result = function(token, context) {
                 return result
             }

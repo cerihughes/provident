@@ -22,6 +22,7 @@
 		F482D344244C698500F13FB1 /* RegistryVoidContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */; };
 		F482D346244C6E8300F13FB1 /* RegistryAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */; };
 		F482D348244C978C00F13FB1 /* UIViewController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */; };
+		F4CCA28B247C06E90076D27A /* SingleViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CCA28A247C06E90076D27A /* SingleViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryVoidContextTests.swift; sourceTree = "<group>"; };
 		F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryAPITests.swift; sourceTree = "<group>"; };
 		F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Testing.swift"; sourceTree = "<group>"; };
+		F4CCA28A247C06E90076D27A /* SingleViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewControllerProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		65ED2755227DA9A700F0A545 /* ViewControllerProvider */ = {
 			isa = PBXGroup;
 			children = (
+				F4CCA28A247C06E90076D27A /* SingleViewControllerProvider.swift */,
 				65ED2763227DAA6700F0A545 /* ViewControllerProvider.swift */,
 			);
 			path = ViewControllerProvider;
@@ -287,6 +290,7 @@
 				65ED2764227DAA6700F0A545 /* ViewControllerProvider.swift in Sources */,
 				65ED275B227DAA4A00F0A545 /* Registrar.swift in Sources */,
 				65ED275C227DAA4A00F0A545 /* Registry.swift in Sources */,
+				F4CCA28B247C06E90076D27A /* SingleViewControllerProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

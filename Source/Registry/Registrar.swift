@@ -21,10 +21,6 @@ public class Registrar<T, C> {
         self.registry = registry
     }
 
-    deinit {
-        unregisterViewControllerProviders()
-    }
-
     public func resolve(serviceProviderFunctions: [ServiceProviderFunction],
                         viewControllerProviderFunctions: [ViewControllerProviderFunction],
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
@@ -54,12 +50,5 @@ public class Registrar<T, C> {
             viewControllerProvider.configure(with: serviceProviders)
             viewControllerProviders.append(viewControllerProvider)
         }
-    }
-
-    internal func unregisterViewControllerProviders() {
-        for viewControllerProvider in viewControllerProviders {
-            viewControllerProvider.unregister(from: registry)
-        }
-        viewControllerProviders.removeAll()
     }
 }

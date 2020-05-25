@@ -10,17 +10,12 @@ import UIKit
 
 @testable import Provident
 
-class TestViewControllerProvider: ViewControllerProvider<String, Void> {
+class TestViewControllerProvider: SingleViewControllerProvider<String, Void> {
     var registered = false, unregistered = false
     var capturedServiceProviders: [String: ServiceProvider]?
     override func register(with registry: Registry<String, Void>) {
         super.register(with: registry)
         registered = true
-    }
-
-    override func unregister(from registry: Registry<String, Void>) {
-        super.unregister(from: registry)
-        unregistered = true
     }
 
     override func configure(with serviceProviders: [String: ServiceProvider]) {

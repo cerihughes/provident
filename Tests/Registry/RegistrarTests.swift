@@ -51,7 +51,7 @@ class RegistrarTests: XCTestCase {
         XCTAssertTrue(TestServiceProviderFactory.created)
     }
 
-    func testRegisterAndUnregisterViewControllerProviders() {
+    func testRegisterViewControllerProviders() {
         TestViewControllerProviderFactory.created = false
 
         XCTAssertEqual(registrar.viewControllerProviders.count, 0)
@@ -64,15 +64,6 @@ class RegistrarTests: XCTestCase {
             let testViewControllerProvider = viewControllerProvider as! TestViewControllerProvider
             XCTAssertTrue(testViewControllerProvider.registered)
             XCTAssertFalse(testViewControllerProvider.unregistered)
-        }
-
-        registrar.unregisterViewControllerProviders()
-        XCTAssertEqual(registrar.viewControllerProviders.count, 0)
-
-        for viewControllerProvider in registrar.viewControllerProviders {
-            let testViewControllerProvider = viewControllerProvider as! TestViewControllerProvider
-            XCTAssertTrue(testViewControllerProvider.registered)
-            XCTAssertTrue(testViewControllerProvider.unregistered)
         }
     }
 }

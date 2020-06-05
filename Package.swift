@@ -7,7 +7,7 @@ let package = Package(name: "Provident",
                           .library(name: "Provident", targets: ["Provident"])
                       ],
                       dependencies: [
-                          ],
+                      ],
                       targets: [
                           .target(name: "Provident",
                                   path: "Source"),

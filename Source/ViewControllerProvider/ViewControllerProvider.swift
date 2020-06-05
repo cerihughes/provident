@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 /// A class that provides a VC (or a number of VCs) for a given token by registering with a ViewControllerRegistry.
 open class ViewControllerProvider<T, C> {

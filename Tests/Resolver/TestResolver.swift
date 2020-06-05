@@ -10,22 +10,22 @@ import Foundation
 import Provident
 
 class TestResolver: Resolver<String, Void> {
-    private let testViewControllerProviderCreationFunctions: [() -> ViewControllerProvider<String, Void>]
-    private let testServiceProviderCreationFunctions: [(ServiceProviderCreationContext) -> ServiceProvider]
+    private let testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction]
+    private let testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]
 
-    init(testViewControllerProviderCreationFunctions: [() -> ViewControllerProvider<String, Void>],
-         testServiceProviderCreationFunctions: [(ServiceProviderCreationContext) -> ServiceProvider]) {
-        self.testViewControllerProviderCreationFunctions = testViewControllerProviderCreationFunctions
-        self.testServiceProviderCreationFunctions = testServiceProviderCreationFunctions
+    init(testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction],
+         testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]) {
+        self.testServiceProviderFunctions = testServiceProviderFunctions
+        self.testViewControllerProviderFunctions = testViewControllerProviderFunctions
 
         super.init()
     }
 
-    override func viewControllerProviderCreationFunctions() -> [() -> ViewControllerProvider<String, Void>] {
-        return testViewControllerProviderCreationFunctions
+    override func serviceProviderFunctions() -> [Registrar<String, Void>.ServiceProviderFunction] {
+        return testServiceProviderFunctions
     }
 
-    override func serviceProviderCreationFunctions() -> [(ServiceProviderCreationContext) -> ServiceProvider] {
-        return testServiceProviderCreationFunctions
+    override func viewControllerProviderFunctions() -> [Registrar<String, Void>.ViewControllerProviderFunction] {
+        return testViewControllerProviderFunctions
     }
 }

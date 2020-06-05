@@ -8,11 +8,6 @@
 
 import UIKit
 
-public protocol RegistryDelegate: AnyObject {
-    func registryDidCreateViewController(_ viewController: UIViewController, from token: Any, context: Any?)
-    func registryDidNotCreateViewControllerFrom(_ token: Any, context: Any?)
-}
-
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to uniquely
 /// identify any VC, and also provide any data that the VC needs to be constructed.
 ///
@@ -25,62 +20,39 @@ public protocol RegistryDelegate: AnyObject {
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
 open class Registry<T, C> {
-    public typealias RegistryFunction = (T) -> UIViewController?
-    public typealias RegistryFunctionWithContext = (T, C) -> UIViewController?
+    typealias RegistryFunction = (T, C) -> UIViewController?
 
-    private var orderedFunctionUUIDs = [UUID]()
-    private var orderedFunctions = [RegistryFunction]()
-
-    private var orderedFunctionWithContextUUIDs = [UUID]()
-    private var orderedFunctionsWithContext = [RegistryFunctionWithContext]()
-
-    public weak var delegate: RegistryDelegate?
+    private var functions = [RegistryFunction]()
 
     public init() {}
 
-    public func add(registryFunction: @escaping RegistryFunction) -> UUID {
-        let uuid = UUID()
-        orderedFunctionUUIDs.append(uuid)
-        orderedFunctions.append(registryFunction)
-        return uuid
+    func add(registryFunction: @escaping RegistryFunction) {
+        functions.append(registryFunction)
     }
 
-    public func add(registryFunction: @escaping RegistryFunctionWithContext) -> UUID {
-        let uuid = UUID()
-        orderedFunctionWithContextUUIDs.append(uuid)
-        orderedFunctionsWithContext.append(registryFunction)
-        return uuid
+    func reset() {
+        functions.removeAll()
     }
 
-    public func removeRegistryFunction(uuid: UUID) {
-        if let index = orderedFunctionUUIDs.firstIndex(of: uuid) {
-            _ = orderedFunctionUUIDs.remove(at: index)
-            _ = orderedFunctions.remove(at: index)
-        }
-        if let index = orderedFunctionWithContextUUIDs.firstIndex(of: uuid) {
-            _ = orderedFunctionWithContextUUIDs.remove(at: index)
-            _ = orderedFunctionsWithContext.remove(at: index)
-        }
-    }
-
-    public func createViewController(from token: T, context: C? = nil) -> UIViewController? {
-        if let context = context {
-            for function in orderedFunctionsWithContext {
-                if let result = function(token, context) {
-                    delegate?.registryDidCreateViewController(result, from: token, context: context)
-                    return result
-                }
-            }
-        }
-
-        for function in orderedFunctions {
-            if let result = function(token) {
-                delegate?.registryDidCreateViewController(result, from: token, context: context)
+    public func createViewController(from token: T, context: C) -> UIViewController? {
+        for function in functions {
+            if let result = function(token, context) {
                 return result
             }
         }
 
-        delegate?.registryDidNotCreateViewControllerFrom(token, context: context)
         return nil
+    }
+}
+
+public extension Registry {
+    func createViewController<Wrapped>(from token: T) -> UIViewController? where C == Wrapped? {
+        return createViewController(from: token, context: nil)
+    }
+}
+
+public extension Registry where C == Void {
+    func createViewController(from token: T) -> UIViewController? {
+        return createViewController(from: token, context: ())
     }
 }

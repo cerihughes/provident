@@ -19,6 +19,10 @@
 		65ED276A227DAAE400F0A545 /* RegistrarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED2768227DAAE400F0A545 /* RegistrarTests.swift */; };
 		65ED276D227DAAF100F0A545 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED276B227DAAF100F0A545 /* TestData.swift */; };
 		65ED276E227DAAF100F0A545 /* TestResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ED276C227DAAF100F0A545 /* TestResolver.swift */; };
+		F482D344244C698500F13FB1 /* RegistryVoidContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */; };
+		F482D346244C6E8300F13FB1 /* RegistryAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */; };
+		F482D348244C978C00F13FB1 /* UIViewController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */; };
+		F4CCA28B247C06E90076D27A /* SingleViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CCA28A247C06E90076D27A /* SingleViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		65ED2768227DAAE400F0A545 /* RegistrarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrarTests.swift; sourceTree = "<group>"; };
 		65ED276B227DAAF100F0A545 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		65ED276C227DAAF100F0A545 /* TestResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResolver.swift; sourceTree = "<group>"; };
+		F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryVoidContextTests.swift; sourceTree = "<group>"; };
+		F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryAPITests.swift; sourceTree = "<group>"; };
+		F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Testing.swift"; sourceTree = "<group>"; };
+		F4CCA28A247C06E90076D27A /* SingleViewControllerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewControllerProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +97,12 @@
 		65C1399E227DA8AA005BC016 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				65C1399F227DA8AA005BC016 /* Provident.h */,
+				65C139A0227DA8AA005BC016 /* Info.plist */,
 				65ED2758227DAA2B00F0A545 /* Registry */,
 				65ED2756227DA9D600F0A545 /* Resolver */,
 				65ED2757227DA9E800F0A545 /* ServiceProvider */,
 				65ED2755227DA9A700F0A545 /* ViewControllerProvider */,
-				65C1399F227DA8AA005BC016 /* Provident.h */,
-				65C139A0227DA8AA005BC016 /* Info.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -102,10 +110,11 @@
 		65C139A9227DA8AA005BC016 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				65C139AC227DA8AA005BC016 /* Info.plist */,
+				65ED276B227DAAF100F0A545 /* TestData.swift */,
+				F482D347244C978C00F13FB1 /* UIViewController+Testing.swift */,
 				65ED2765227DAAAC00F0A545 /* Registry */,
 				65ED2766227DAAC100F0A545 /* Resolver */,
-				65ED276B227DAAF100F0A545 /* TestData.swift */,
-				65C139AC227DA8AA005BC016 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -113,6 +122,7 @@
 		65ED2755227DA9A700F0A545 /* ViewControllerProvider */ = {
 			isa = PBXGroup;
 			children = (
+				F4CCA28A247C06E90076D27A /* SingleViewControllerProvider.swift */,
 				65ED2763227DAA6700F0A545 /* ViewControllerProvider.swift */,
 			);
 			path = ViewControllerProvider;
@@ -148,7 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				65ED2768227DAAE400F0A545 /* RegistrarTests.swift */,
+				F482D345244C6E8300F13FB1 /* RegistryAPITests.swift */,
 				65ED2767227DAAE400F0A545 /* RegistryTests.swift */,
+				F482D343244C698500F13FB1 /* RegistryVoidContextTests.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -227,7 +239,7 @@
 					};
 					65C139A4227DA8AA005BC016 = {
 						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -278,6 +290,7 @@
 				65ED2764227DAA6700F0A545 /* ViewControllerProvider.swift in Sources */,
 				65ED275B227DAA4A00F0A545 /* Registrar.swift in Sources */,
 				65ED275C227DAA4A00F0A545 /* Registry.swift in Sources */,
+				F4CCA28B247C06E90076D27A /* SingleViewControllerProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,8 +299,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				65ED276A227DAAE400F0A545 /* RegistrarTests.swift in Sources */,
+				F482D348244C978C00F13FB1 /* UIViewController+Testing.swift in Sources */,
+				F482D346244C6E8300F13FB1 /* RegistryAPITests.swift in Sources */,
 				65ED2769227DAAE400F0A545 /* RegistryTests.swift in Sources */,
 				65ED276E227DAAF100F0A545 /* TestResolver.swift in Sources */,
+				F482D344244C698500F13FB1 /* RegistryVoidContextTests.swift in Sources */,
 				65ED276D227DAAF100F0A545 /* TestData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,5 @@ import Foundation
 open class ViewControllerProvider<T, C> {
     public init() {}
     open func register(with _: Registry<T, C>) {}
-    open func unregister(from _: Registry<T, C>) {}
     open func configure(with _: [String: ServiceProvider]) {}
 }

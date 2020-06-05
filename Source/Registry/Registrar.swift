@@ -24,7 +24,7 @@ public class Registrar<T, C> {
     deinit {
         registry.reset()
     }
-    
+
     public func resolve(serviceProviderFunctions: [ServiceProviderFunction],
                         viewControllerProviderFunctions: [ViewControllerProviderFunction],
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {

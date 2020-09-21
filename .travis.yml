@@ -6,7 +6,7 @@ env:
     - PROJECT_NAME="Provident.xcodeproj"
     - SPM_PROJECT_NAME="ProvidentSPM.xcodeproj"
   matrix:
-    - DESTINATION="OS=13.0,name=iPhone 11" SCHEME="Provident" SPM_SCHEME="Provident-Package" SDK="iphonesimulator13.0"
+    - DESTINATION="OS=14.0,name=iPhone 11" SCHEME="Provident" SPM_SCHEME="Provident-Package" SDK="iphonesimulator14.0"
 
 before_install:
   - gem install xcpretty-travis-formatter --quiet

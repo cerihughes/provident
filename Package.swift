@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(name: "Provident",
-                      platforms: [.iOS(.v11)],
+                      platforms: [.iOS(.v12)],
                       products: [
                           .library(name: "Provident", targets: ["Provident"])
                       ],

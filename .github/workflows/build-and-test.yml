@@ -30,5 +30,6 @@ jobs:
       # Build and test
       - run: set -o pipefail
       - run: xcodebuild clean test -scheme Provident -destination "OS=latest,name=iPhone 11" -destination "OS=latest,name=iPad (8th generation)" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      - run: swift test --enable-code-coverage 
       - name: Codecov
         uses: codecov/codecov-action@v1.0.6

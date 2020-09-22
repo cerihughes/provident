@@ -6,7 +6,6 @@
 //  Copyright © 2020 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 @testable import Provident
@@ -51,13 +50,13 @@ class RegistryVoidContextTests: XCTestCase {
 
     // MARK: - Test functions
 
-    private func createFunction(limit: Int) -> (Int, Void) -> UIViewController? {
+    private func createFunction(limit: Int) -> (Int, Void) -> ViewController? {
         return { token, _ in
             guard token <= limit else {
                 return nil
             }
 
-            return UIViewController(title: "function \(limit)")
+            return ViewController(title: "function \(limit)")
         }
     }
 }

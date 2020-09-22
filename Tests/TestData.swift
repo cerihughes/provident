@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 @testable import Provident
 
@@ -22,8 +22,8 @@ class TestViewControllerProvider: SingleViewControllerProvider<String, Void> {
         capturedServiceProviders = serviceProviders
     }
 
-    override func createViewController(token: String, context: Void) -> UIViewController? {
-        return UIViewController(title: token)
+    override func createViewController(token: String, context: Void) -> ViewController? {
+        return ViewController(title: token)
     }
 }
 

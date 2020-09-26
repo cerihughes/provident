@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to uniquely
 /// identify any VC, and also provide any data that the VC needs to be constructed.
@@ -20,7 +20,7 @@ import UIKit
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
 open class Registry<T, C> {
-    typealias RegistryFunction = (T, C) -> UIViewController?
+    typealias RegistryFunction = (T, C) -> ViewController?
 
     private var functions = [RegistryFunction]()
 
@@ -34,7 +34,7 @@ open class Registry<T, C> {
         functions.removeAll()
     }
 
-    public func createViewController(from token: T, context: C) -> UIViewController? {
+    public func createViewController(from token: T, context: C) -> ViewController? {
         for function in functions {
             if let result = function(token, context) {
                 return result
@@ -46,13 +46,13 @@ open class Registry<T, C> {
 }
 
 public extension Registry {
-    func createViewController<Wrapped>(from token: T) -> UIViewController? where C == Wrapped? {
+    func createViewController<Wrapped>(from token: T) -> ViewController? where C == Wrapped? {
         return createViewController(from: token, context: nil)
     }
 }
 
 public extension Registry where C == Void {
-    func createViewController(from token: T) -> UIViewController? {
+    func createViewController(from token: T) -> ViewController? {
         return createViewController(from: token, context: ())
     }
 }

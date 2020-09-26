@@ -1,0 +1,23 @@
+name: Build and test iOS12
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      # Xcode select
+      - run: sudo xcode-select -switch /Applications/Xcode_10.3.app
+
+      # Install dependencies
+      - run: brew install swiftlint || true
+      - run: brew outdated swiftlint || brew upgrade swiftlint
+
+      # Checkout
+      - uses: actions/checkout@v2
+      - run: mkdir build
+
+      # Build and test
+      - run: set -o pipefail
+      - run: xcodebuild clean test -derivedDataPath DerivedData -project Provident.xcodeproj -scheme Provident -destination "OS=12.4,name=iPhone X" -destination "OS=12.4,name=iPad (6th generation)" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for Provident.
 FOUNDATION_EXPORT double ProvidentVersionNumber;

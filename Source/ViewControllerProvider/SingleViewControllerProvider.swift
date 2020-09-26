@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 open class SingleViewControllerProvider<T, C>: ViewControllerProvider<T, C> {
     override public init() {}
@@ -15,7 +15,7 @@ open class SingleViewControllerProvider<T, C>: ViewControllerProvider<T, C> {
         registry.add(registryFunction: createViewController(token:context:))
     }
 
-    open func createViewController(token: T, context: C) -> UIViewController? {
+    open func createViewController(token: T, context: C) -> ViewController? {
         // OVERRIDE
         return nil
     }

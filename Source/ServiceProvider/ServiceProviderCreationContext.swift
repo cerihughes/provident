@@ -6,12 +6,12 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public protocol ServiceProviderCreationContext {
-    var launchOptions: [UIApplication.LaunchOptionsKey: Any]? { get }
+    var launchOptions: LaunchOptions? { get }
 }
 
 internal class ServiceProviderCreationContextImplementation: ServiceProviderCreationContext {
-    internal var launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    internal var launchOptions: LaunchOptions?
 }

@@ -7,9 +7,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # Xcode select
-      - run: sudo xcode-select -switch /Applications/Xcode_12.app
-
       # Install dependencies
       - run: brew install swiftlint || true
       - run: brew outdated swiftlint || brew upgrade swiftlint
@@ -20,8 +17,13 @@ jobs:
 
       # Build and test
       - run: set -o pipefail
-      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=latest,name=iPhone 11" -destination "OS=13.7,name=iPhone11" -destination "OS=12.4,name=iPhone11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-      - run: swift package generate-xcodeproj --output ProvidentSPM.xcodeproj
+      - run: sudo xcode-select -switch /Applications/Xcode_12.app
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=14.0,name=iPhone11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      - run: sudo xcode-select -switch /Applications/Xcode_11.7.app
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=13.7,name=iPhone11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      - run: sudo xcode-select -switch /Applications/Xcode_10.3.app
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=12.4,name=iPhone11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
       - name: Codecov
         uses: codecov/codecov-action@v1.0.6
+      - run: swift package generate-xcodeproj --output ProvidentSPM.xcodeproj
       - run: xcodebuild clean build -project ProvidentSPM.xcodeproj -scheme Provident-Package -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO

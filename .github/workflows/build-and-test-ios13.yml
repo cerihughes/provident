@@ -1,0 +1,23 @@
+name: Build and test PRs
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      # Xcode select
+      - run: sudo xcode-select -switch /Applications/Xcode_11.7.app
+
+      # Install dependencies
+      - run: brew install swiftlint || true
+      - run: brew outdated swiftlint || brew upgrade swiftlint
+
+      # Checkout
+      - uses: actions/checkout@v2
+      - run: mkdir build
+
+      # Build and test
+      - run: set -o pipefail
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=13.7,name=iPhone 11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO

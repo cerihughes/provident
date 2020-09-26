@@ -20,9 +20,10 @@ jobs:
 
       # Build and test
       - run: set -o pipefail
-      - run: xcodebuild clean test -derivedDataPath DerivedData -project Provident.xcodeproj -scheme Provident -destination "OS=14.0,name=iPhone 11" -destination "OS=14.0,name=iPad (8th generation)" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-      - run: bash <(curl -s https://codecov.io/bash)
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=14.0,name=iPhone 11" -destination "OS=14.0,name=iPad (8th generation)" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.13
 
       # Build SPM
       - run: swift package generate-xcodeproj --output ProvidentSPM.xcodeproj
-      - run: xcodebuild clean build -project ProvidentSPM.xcodeproj -scheme Provident-Package -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      - run: xcodebuild clean build -project ProvidentSPM.xcodeproj -scheme Provident-Package -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64

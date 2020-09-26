@@ -20,4 +20,4 @@ jobs:
 
       # Build and test
       - run: set -o pipefail
-      - run: xcodebuild clean test -derivedDataPath DerivedData -project Provident.xcodeproj -scheme Provident -destination "OS=12.4,name=iPhone X" -destination "OS=12.4,name=iPad (6th generation)" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=12.4,name=iPhone X" -destination "OS=12.4,name=iPad (6th generation)" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64

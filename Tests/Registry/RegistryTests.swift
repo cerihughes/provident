@@ -6,7 +6,6 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 @testable import Provident
@@ -99,7 +98,7 @@ class RegistryTests: XCTestCase {
 
     // MARK: - Test functions
 
-    private func createFunction(limit: Int) -> (Int, String?) -> UIViewController? {
+    private func createFunction(limit: Int) -> (Int, String?) -> ViewController? {
         return { token, context in
             guard token <= limit else {
                 return nil
@@ -112,7 +111,7 @@ class RegistryTests: XCTestCase {
                 title = "function \(limit)"
             }
 
-            return UIViewController(title: title)
+            return ViewController(title: title)
         }
     }
 }

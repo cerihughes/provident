@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public class Registrar<T, C> {
     public typealias ServiceProviderFunction = (ServiceProviderCreationContext) -> ServiceProvider
@@ -27,14 +27,14 @@ public class Registrar<T, C> {
 
     public func resolve(serviceProviderFunctions: [ServiceProviderFunction],
                         viewControllerProviderFunctions: [ViewControllerProviderFunction],
-                        launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
+                        launchOptions: LaunchOptions? = nil) {
         let context = ServiceProviderCreationContextImplementation()
         context.launchOptions = launchOptions
         createServiceProviders(functions: serviceProviderFunctions, context: context)
         registerViewControllerProviders(functions: viewControllerProviderFunctions)
     }
 
-    public func resolve(resolver: Resolver<T, C>, launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) {
+    public func resolve(resolver: Resolver<T, C>, launchOptions: LaunchOptions? = nil) {
         resolve(serviceProviderFunctions: resolver.serviceProviderFunctions(),
                 viewControllerProviderFunctions: resolver.viewControllerProviderFunctions())
     }

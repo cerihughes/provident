@@ -18,7 +18,7 @@ jobs:
 
       # Build and test (latest)
       - run: sudo xcode-select -switch /Applications/Xcode_12.app
-      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=14.0,name=iPhone11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=14.0,name=iPhone 11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
       - name: Codecov
         uses: codecov/codecov-action@v1.0.6
 

@@ -13,5 +13,5 @@ let package = Package(name: "Provident",
                                   path: "Source"),
                           .testTarget(name: "ProvidentTests",
                                       dependencies: ["Provident"],
-                                      path: "Tests"),
+                                      path: "Tests")
                       ])

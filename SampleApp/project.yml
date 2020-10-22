@@ -6,10 +6,6 @@ schemes:
         App: all
 options:
   bundleIdPrefix: uk.co.cerihughes
-packages:
-  Provident:
-    url: https://github.com/cerihughes/Provident
-    branch: master
 targets:
   App:
     type: application

@@ -7,6 +7,13 @@
 
 import Provident
 
+let sampleServiceProviderName = "sampleServiceProviderName"
+
 class SampleServiceProvider: ServiceProvider {
-    let sampleService: SampleService = SampleServiceImplementation()
+    let loginService: LoginService = LoginServiceImplementation()
+
+    override init(context: ServiceProviderCreationContext) {
+        super.init(context: context)
+        name = sampleServiceProviderName
+    }
 }

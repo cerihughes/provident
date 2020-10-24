@@ -10,22 +10,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    private let registry = Registry<Navigation, Void>()
-    var window: UIWindow?
+    private var ui: SampleUI!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let registrar = Registrar(registry: registry)
-        registrar.resolve(resolver: SampleResolver())
-
-        guard let initialViewController = registry.createViewController(from: .login) else {
-            return false
-        }
-
         let window = UIWindow()
-        window.rootViewController = UINavigationController(rootViewController: initialViewController)
+        ui = SampleUI(window: window)
         window.makeKeyAndVisible()
 
-        self.window = window
-        return true
+        return ui.showInitialUI()
     }
 }

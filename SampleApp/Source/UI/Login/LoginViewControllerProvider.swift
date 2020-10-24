@@ -12,11 +12,13 @@ class LoginViewControllerProvider: SampleViewControllerProvider {
     override func createViewController(token: Navigation, context: Void) -> ViewController? {
         guard
             token == .login,
-            let registry = self.registry
+            let registry = self.registry,
+            let loginService = serviceProvider?.loginService
         else {
             return nil
         }
 
-        return LoginViewController(registry: registry)
+        let viewModel = LoginViewModel(loginService: loginService)
+        return LoginViewController(viewModel: viewModel, registry: registry)
     }
 }

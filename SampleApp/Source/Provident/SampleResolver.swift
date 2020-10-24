@@ -17,7 +17,8 @@ class SampleResolver: Resolver<Navigation, Void> {
 
     override func viewControllerProviderFunctions() -> [Registrar<Navigation, Void>.ViewControllerProviderFunction] {
         return [
-            LoginViewControllerProvider.init
+            LoginViewControllerProvider.init,
+            ErrorViewControllerProvider.init
         ]
     }
 }

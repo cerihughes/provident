@@ -25,6 +25,9 @@ class LabelledTextField: UIView {
     private func commonInit() {
         label.textAlignment = .right
         textField.backgroundColor = .white
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.spellCheckingType = .no
 
         addSubview(label)
         addSubview(textField)

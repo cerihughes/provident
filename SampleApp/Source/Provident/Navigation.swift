@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum Navigation {
+enum Navigation: Equatable {
     case login
+    case error(message: String)
 }

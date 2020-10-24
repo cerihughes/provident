@@ -9,10 +9,12 @@ import Provident
 import UIKit
 
 class LoginViewController: UIViewController {
+    private let viewModel: LoginViewModel
     private let registry: Registry<Navigation, Void>
     private lazy var loginView = LoginView()
 
-    init(registry: Registry<Navigation, Void>) {
+    init(viewModel: LoginViewModel, registry: Registry<Navigation, Void>) {
+        self.viewModel = viewModel
         self.registry = registry
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,5 +40,18 @@ class LoginViewController: UIViewController {
     }
 
     @objc
-    private func submitTapped(sender: UIButton) {}
+    private func submitTapped(sender: UIButton) {
+        guard
+            let username = loginView.username.textField.text,
+            let password = loginView.password.textField.text
+        else {
+            return
+        }
+        viewModel.login(username: username, password: password) { [weak self] result in
+            let nextToken: Navigation = result ? .error(message: "Success") : .error(message: "Incorrect username or password")
+            if let vc = self?.registry.createViewController(from: nextToken) {
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
 }

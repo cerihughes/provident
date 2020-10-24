@@ -9,5 +9,6 @@ import Foundation
 
 enum Navigation: Equatable {
     case login
+    case logout
     case error(message: String)
 }

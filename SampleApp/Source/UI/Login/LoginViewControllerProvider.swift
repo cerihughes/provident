@@ -13,12 +13,12 @@ class LoginViewControllerProvider: SampleViewControllerProvider {
         guard
             token == .login,
             let registry = self.registry,
-            let loginService = serviceProvider?.loginService
+            let authenticationService = serviceProvider?.authenticationService
         else {
             return nil
         }
 
-        let viewModel = LoginViewModel(loginService: loginService)
+        let viewModel = LoginViewModel(authenticationService: authenticationService)
         return LoginViewController(viewModel: viewModel, registry: registry)
     }
 }

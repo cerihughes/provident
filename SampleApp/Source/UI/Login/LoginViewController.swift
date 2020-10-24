@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
             return
         }
         viewModel.login(username: username, password: password) { [weak self] result in
-            let nextToken: Navigation = result ? .error(message: "Success") : .error(message: "Incorrect username or password")
+            let nextToken: Navigation = result ? .logout : .error(message: "Incorrect username or password")
             if let vc = self?.registry.createViewController(from: nextToken) {
                 self?.navigationController?.pushViewController(vc, animated: true)
             }

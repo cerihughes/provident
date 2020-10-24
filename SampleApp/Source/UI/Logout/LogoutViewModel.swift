@@ -1,20 +1,20 @@
 //
-//  LoginViewModel.swift
+//  LogoutViewModel.swift
 //  App
 //
 //  Created by Ceri Hughes on 24/10/2020.
 //
 
-import Foundation
+import Combine
 
-class LoginViewModel {
+class LogoutViewModel: ObservableObject {
     private let authenticationService: AuthenticationService
 
     init(authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService
     }
 
-    func login(username: String, password: String, completion: (Bool) -> Void) {
-        authenticationService.login(username: username, password: password, completion: completion)
+    func logout(completion: () -> Void) {
+        authenticationService.logout(completion: completion)
     }
 }

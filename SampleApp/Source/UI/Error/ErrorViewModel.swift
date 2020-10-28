@@ -8,7 +8,6 @@
 import Combine
 
 class ErrorViewModel {
-    let title = "Title"
     let message: String
 
     init(message: String) {

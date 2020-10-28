@@ -29,7 +29,6 @@ class ErrorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = viewModel.title
         errorView.label.text = viewModel.message
     }
 }

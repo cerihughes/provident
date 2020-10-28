@@ -1,4 +1,4 @@
-name: ProvidentSampleApp
+name: SampleAppSPM
 schemes:
   App:
     build:
@@ -6,6 +6,13 @@ schemes:
         App: all
 options:
   bundleIdPrefix: uk.co.cerihughes
+packages:
+  Provident:
+    url: https://github.com/cerihughes/Provident
+    branch: master
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit
+    from: 5.0.0
 targets:
   App:
     type: application
@@ -18,5 +25,5 @@ targets:
       - Source
       - Resources
     dependencies:
-      - carthage: Provident
-      - carthage: SnapKit
+      - package: Provident
+      - package: SnapKit

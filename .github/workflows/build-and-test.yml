@@ -45,11 +45,11 @@ jobs:
         working-directory: SampleApp
       - run: xcodegen generate -s project-carthage.yml
         working-directory: SampleApp
-      - run: xcodebuild clean build -project SampleAppCarthage.xcodeproj/ -configuration Release CODE_SIGNING_REQUIRED=NO
+      - run: xcodebuild clean build -project SampleAppCarthage.xcodeproj/ -configuration Debug CODE_SIGNING_REQUIRED=NO
         working-directory: SampleApp
 
       # Build SPM Sample
       - run: xcodegen generate -s project-spm.yml
         working-directory: SampleApp
-      - run: xcodebuild clean build -project SampleAppSPM.xcodeproj/ -configuration Release CODE_SIGNING_REQUIRED=NO
+      - run: xcodebuild clean build -project SampleAppSPM.xcodeproj/ -configuration Debug CODE_SIGNING_REQUIRED=NO
         working-directory: SampleApp

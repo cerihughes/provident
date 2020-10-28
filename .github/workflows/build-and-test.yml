@@ -35,12 +35,16 @@ jobs:
       - run: xcodebuild clean build -project ProvidentSPM.xcodeproj -scheme Provident-Package -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64
 
       # Sample App Setup
-      - run: brew install xcodegen carthage || true
-      - run: brew outdated xcodegen || brew upgrade xcodegen
+      - run: brew install carthage xcodegen || true
       - run: brew outdated carthage || brew upgrade carthage
+      - run: brew outdated xcodegen || brew upgrade xcodegen
+      - run: cd SampleApp
 
       # Build Carthage Sample
-      - run: cd SampleApp
+      - run: ios-tools/carthage-xcode12.sh update --platform ios
       - run: xcodegen generate -s project-carthage.yml
-      - run: cathage update --platfrom iOS
-      - run: swift package generate-xcodeproj --output ProvidentSPM.xcodeproj
+      - run: xcodebuild clean build -project SampleAppCarthage.xcodeproj/ -configuration Release CODE_SIGNING_REQUIRED=NO
+
+      # Build SPM Sample
+      - run: xcodegen generate -s project-spm.yml
+      - run: xcodebuild clean build -project SampleAppSPM.xcodeproj/ -configuration Release CODE_SIGNING_REQUIRED=NO

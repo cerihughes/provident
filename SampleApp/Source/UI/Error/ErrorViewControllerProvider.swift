@@ -8,8 +8,8 @@
 import Provident
 import SwiftUI
 
-class ErrorViewControllerProvider: SwiftUIViewControllerProvider {
-    override func createView(token: Navigation, context: Void) -> AnyView? {
+class ErrorViewControllerProvider: SampleViewControllerProvider {
+    override func createViewController(token: Navigation, context: Void) -> UIViewController? {
         guard
             case let .error(message) = token
         else {
@@ -17,6 +17,6 @@ class ErrorViewControllerProvider: SwiftUIViewControllerProvider {
         }
 
         let viewModel = ErrorViewModel(message: message)
-        return AnyView(ErrorView(viewModel: viewModel))
+        return ErrorViewController(viewModel: viewModel)
     }
 }

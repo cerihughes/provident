@@ -12,23 +12,15 @@ class SampleUI {
     private let window: UIWindow
     private let registry: Registry<Navigation, Void>
     private let registrar: Registrar<Navigation, Void>
-    private let navigationController = UINavigationController()
 
     init(window: UIWindow) {
         self.window = window
         registry = Registry()
         registrar = Registrar(registry: registry)
         registrar.resolve(resolver: SampleResolver())
-
-        window.rootViewController = navigationController
     }
 
     func showInitialUI() -> Bool {
-        guard let initialViewController = registry.createViewController(from: .login) else {
-            return false
-        }
-
-        navigationController.pushViewController(initialViewController, animated: false)
-        return true
+        Navigation.login.navigate(using: registry, from: nil, in: window)
     }
 }

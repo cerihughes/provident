@@ -6,10 +6,10 @@
 //
 
 import Provident
-import SwiftUI
+import UIKit
 
-class LogoutViewControllerProvider: SwiftUIViewControllerProvider {
-    override func createView(token: Navigation, context: Void) -> AnyView? {
+class LogoutViewControllerProvider: SampleViewControllerProvider {
+    override func createViewController(token: Navigation, context: Void) -> ViewController? {
         guard
             token == .logout,
             let registry = self.registry,
@@ -19,6 +19,6 @@ class LogoutViewControllerProvider: SwiftUIViewControllerProvider {
         }
 
         let viewModel = LogoutViewModel(authenticationService: authenticationService)
-        return AnyView(LogoutView(viewModel: viewModel))
+        return LogoutViewController(viewModel: viewModel, registry: registry)
     }
 }

@@ -5,10 +5,12 @@
 //  Created by Ceri Hughes on 24/10/2020.
 //
 
-import Combine
+import Foundation
 
-class LogoutViewModel: ObservableObject {
+class LogoutViewModel {
     private let authenticationService: AuthenticationService
+
+    let logoutTitle = "Log out"
 
     init(authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService

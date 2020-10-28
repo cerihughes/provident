@@ -5,22 +5,29 @@
 //  Created by Ceri Hughes on 24/10/2020.
 //
 
-import SwiftUI
+import SnapKit
+import UIKit
 
-struct LogoutView: View {
-    @ObservedObject var viewModel: LogoutViewModel
+class LogoutView: UIView {
+    let logout = UIButton()
 
-    init(viewModel: LogoutViewModel) {
-        self.viewModel = viewModel
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
     }
 
-    var body: some View {
-        Button(action: {
-            viewModel.logout {
-                print("done")
-            }
-        }) {
-            Text("Logout")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        backgroundColor = .lightGray
+
+        addSubview(logout)
+
+        logout.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 }

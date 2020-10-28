@@ -31,27 +31,35 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Login"
+        loginView.username.label.text = viewModel.usernameTitle
+        loginView.password.label.text = viewModel.passwordTitle
+        loginView.submit.setTitle(viewModel.submitTitle, for: .normal)
 
-        loginView.username.label.text = "Username:"
-        loginView.password.label.text = "Password:"
-        loginView.submit.setTitle("Submit", for: .normal)
+        loginView.username.textField.addTarget(self, action: #selector(updateUsername), for: .editingChanged)
+        loginView.password.textField.addTarget(self, action: #selector(updatePassword), for: .editingChanged)
         loginView.submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
     }
 
     @objc
+    private func updateUsername(sender: UITextField) {
+        update(from: sender, keypath: \.username)
+    }
+
+    @objc
+    private func updatePassword(sender: UITextField) {
+        update(from: sender, keypath: \.password)
+    }
+
+    private func update(from textField: UITextField, keypath: ReferenceWritableKeyPath<LoginViewModel, String>) {
+        viewModel[keyPath: keypath] = textField.text ?? ""
+    }
+
+    @objc
     private func submitTapped(sender: UIButton) {
-        guard
-            let username = loginView.username.textField.text,
-            let password = loginView.password.textField.text
-        else {
-            return
-        }
-        viewModel.login(username: username, password: password) { [weak self] result in
+        viewModel.login { [weak self] result in
+            guard let window = view.window else { return }
             let nextToken: Navigation = result ? .logout : .error(message: "Incorrect username or password")
-            if let vc = self?.registry.createViewController(from: nextToken) {
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
+            nextToken.navigate(using: registry, from: self, in: window)
         }
     }
 }

@@ -7,8 +7,9 @@
 
 import Combine
 
-class ErrorViewModel: ObservableObject {
-    @Published private(set) var message: String
+class ErrorViewModel {
+    let title = "Title"
+    let message: String
 
     init(message: String) {
         self.message = message

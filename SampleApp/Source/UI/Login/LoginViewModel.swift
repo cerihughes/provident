@@ -10,11 +10,18 @@ import Foundation
 class LoginViewModel {
     private let authenticationService: AuthenticationService
 
+    let usernameTitle = "Username:"
+    let passwordTitle = "Password:"
+    let submitTitle = "Submit"
+
+    var username = ""
+    var password = ""
+
     init(authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService
     }
 
-    func login(username: String, password: String, completion: (Bool) -> Void) {
+    func login(completion: (Bool) -> Void) {
         authenticationService.login(username: username, password: password, completion: completion)
     }
 }

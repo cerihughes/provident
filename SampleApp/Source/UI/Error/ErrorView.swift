@@ -5,16 +5,29 @@
 //  Created by Ceri Hughes on 23/10/2020.
 //
 
-import SwiftUI
+import SnapKit
+import UIKit
 
-struct ErrorView: View {
-    @ObservedObject var viewModel: ErrorViewModel
+class ErrorView: UIView {
+    let label = UILabel()
 
-    init(viewModel: ErrorViewModel) {
-        self.viewModel = viewModel
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
     }
 
-    var body: some View {
-        Text(viewModel.message)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        backgroundColor = .lightGray
+
+        addSubview(label)
+
+        label.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 }

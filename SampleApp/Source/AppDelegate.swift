@@ -1,0 +1,22 @@
+//
+//  AppDelegate.swift
+//  App
+//
+//  Created by Ceri Hughes on 22/10/2020.
+//
+
+import Provident
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    private var ui: SampleUI!
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let window = UIWindow()
+        ui = SampleUI(window: window)
+        window.makeKeyAndVisible()
+
+        return ui.showInitialUI()
+    }
+}

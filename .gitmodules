@@ -1,3 +1,6 @@
 [submodule "ios-tools"]
 	path = ios-tools
 	url = https://github.com/cerihughes/ios-tools.git
+[submodule "SampleApp/ios-tools"]
+	path = SampleApp/ios-tools
+	url = https://github.com/cerihughes/ios-tools.git

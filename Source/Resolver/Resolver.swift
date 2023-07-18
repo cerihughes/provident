@@ -18,3 +18,8 @@ public protocol Resolver<T, C> {
     func serviceProviderFunctions() -> [Registrar<T, C>.ServiceProviderFunction]
     func viewControllerProviderFunctions() -> [Registrar<T, C>.ViewControllerProviderFunction]
 }
+
+public extension Resolver {
+    func serviceProviderFunctions() -> [Registrar<T, C>.ServiceProviderFunction] { [] }
+    func viewControllerProviderFunctions() -> [Registrar<T, C>.ViewControllerProviderFunction] { [] }
+}

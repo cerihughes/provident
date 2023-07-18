@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class ServiceProvider {
-    public var name: String = "Default"
-    public init(context _: ServiceProviderCreationContext) {}
+public protocol ServiceProvider {
+    var name: String { get }
+    init(context _: ServiceProviderCreationContext)
 }

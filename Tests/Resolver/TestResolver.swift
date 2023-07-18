@@ -9,23 +9,26 @@
 import Foundation
 import Provident
 
-class TestResolver: Resolver<String, Void> {
+class TestResolver: Resolver {
+    typealias T = String
+    typealias C = Void
+
     private let testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction]
     private let testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]
 
-    init(testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction],
-         testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]) {
+    init(
+        testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction],
+        testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]
+    ) {
         self.testServiceProviderFunctions = testServiceProviderFunctions
         self.testViewControllerProviderFunctions = testViewControllerProviderFunctions
-
-        super.init()
     }
 
-    override func serviceProviderFunctions() -> [Registrar<String, Void>.ServiceProviderFunction] {
+    func serviceProviderFunctions() -> [Registrar<String, Void>.ServiceProviderFunction] {
         testServiceProviderFunctions
     }
 
-    override func viewControllerProviderFunctions() -> [Registrar<String, Void>.ViewControllerProviderFunction] {
+    func viewControllerProviderFunctions() -> [Registrar<String, Void>.ViewControllerProviderFunction] {
         testViewControllerProviderFunctions
     }
 }

@@ -8,13 +8,13 @@
 
 import Foundation
 
-/// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to uniquely
-/// identify any VC, and also provide any data that the VC needs to be constructed.
+/// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to
+/// uniquely identify any VC, and also provide any data that the VC needs to be constructed.
 ///
 /// The registry works by registering a number of functions. To retrieve a VC, the Token is passed into all
-/// registered functions along with an optional Context <C>. The context isn't "optional" in the traditional (C?) sense -
-/// instead there are 2 creation functions - 1 that uses C, and one that doesn't. The 1st non-nil VC that comes back is
-/// used as the return value.
+/// registered functions along with an optional Context <C>. The context isn't "optional" in the traditional (C?)
+/// sense - instead there are 2 creation functions - 1 that uses C, and one that doesn't. The 1st non-nil VC that comes
+/// back is used as the return value.
 ///
 /// Note that registrants should make sure they don't "overlap" - if more than 1 registrant could potentially return a
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
@@ -47,12 +47,12 @@ open class Registry<T, C> {
 
 public extension Registry {
     func createViewController<Wrapped>(from token: T) -> ViewController? where C == Wrapped? {
-        return createViewController(from: token, context: nil)
+        createViewController(from: token, context: nil)
     }
 }
 
 public extension Registry where C == Void {
     func createViewController(from token: T) -> ViewController? {
-        return createViewController(from: token, context: ())
+        createViewController(from: token, context: ())
     }
 }

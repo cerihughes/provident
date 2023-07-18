@@ -43,7 +43,10 @@ class RegistrarTests: XCTestCase {
         TestServiceProviderFactory.created = false
 
         XCTAssertEqual(registrar.serviceProviders.count, 0)
-        registrar.createServiceProviders(functions: resolver.serviceProviderFunctions(), context: ServiceProviderCreationContextImplementation())
+        registrar.createServiceProviders(
+            functions: resolver.serviceProviderFunctions(),
+            context: ServiceProviderCreationContextImplementation()
+        )
 
         // Both factories create a service provider object with the same name, so we only get 1 object
         XCTAssertEqual(registrar.serviceProviders.count, 1)

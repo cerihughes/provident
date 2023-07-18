@@ -21,7 +21,7 @@ class TestViewControllerProvider: SingleViewControllerProvider<String, Void> {
     }
 
     override func createViewController(token: String, context: Void) -> ViewController? {
-        return ViewController(title: token)
+        ViewController(title: token)
     }
 }
 

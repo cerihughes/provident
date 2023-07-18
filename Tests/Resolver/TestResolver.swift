@@ -22,10 +22,10 @@ class TestResolver: Resolver<String, Void> {
     }
 
     override func serviceProviderFunctions() -> [Registrar<String, Void>.ServiceProviderFunction] {
-        return testServiceProviderFunctions
+        testServiceProviderFunctions
     }
 
     override func viewControllerProviderFunctions() -> [Registrar<String, Void>.ViewControllerProviderFunction] {
-        return testViewControllerProviderFunctions
+        testViewControllerProviderFunctions
     }
 }

@@ -11,8 +11,6 @@ schemes:
         - Provident
       targets: 
         - ProvidentTests
-      commandLineArguments:
-        "-isRunningUnitTests YES": true
 options:
   bundleIdPrefix: uk.co.cerihughes
   deploymentTarget:
@@ -23,7 +21,6 @@ targets:
     platform: iOS
     settings:
       INFOPLIST_FILE: Source/Info.plist
-      DEVELOPMENT_TEAM: Y56955G4Q8
     sources:
       - Source
     postCompileScripts:

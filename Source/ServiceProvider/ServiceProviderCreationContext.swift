@@ -12,6 +12,6 @@ public protocol ServiceProviderCreationContext {
     var launchOptions: LaunchOptions? { get }
 }
 
-internal class ServiceProviderCreationContextImplementation: ServiceProviderCreationContext {
-    internal var launchOptions: LaunchOptions?
+class ServiceProviderCreationContextImplementation: ServiceProviderCreationContext {
+    var launchOptions: LaunchOptions?
 }

@@ -51,7 +51,7 @@ class RegistryVoidContextTests: XCTestCase {
     // MARK: - Test functions
 
     private func createFunction(limit: Int) -> (Int, Void) -> ViewController? {
-        return { token, _ in
+        { token, _ in
             guard token <= limit else {
                 return nil
             }

@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
     @objc
     private func submitTapped(sender: UIButton) {
         viewModel.login { [weak self] result in
-            guard let window = view.window else { return }
+            guard let self = self, let window = self.view.window else { return }
             let nextToken: Navigation = result ? .logout : .error(message: "Incorrect username or password")
             nextToken.navigate(using: registry, from: self, in: window)
         }

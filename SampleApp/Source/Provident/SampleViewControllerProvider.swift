@@ -13,13 +13,11 @@ class SampleViewControllerProvider: SingleViewControllerProvider<Navigation, Voi
 
     override func register(with registry: Registry<Navigation, Void>) {
         super.register(with: registry)
-
         self.registry = registry
     }
 
     override final func configure(with serviceProviders: [String: ServiceProvider]) {
         super.configure(with: serviceProviders)
-
         serviceProvider = serviceProviders[sampleServiceProviderName] as? SampleServiceProvider
     }
 }

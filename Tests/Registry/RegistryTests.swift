@@ -99,7 +99,7 @@ class RegistryTests: XCTestCase {
     // MARK: - Test functions
 
     private func createFunction(limit: Int) -> (Int, String?) -> ViewController? {
-        return { token, context in
+        { token, context in
             guard token <= limit else {
                 return nil
             }

@@ -15,7 +15,7 @@ public class Registrar<T, C> {
     public let registry: Registry<T, C>
 
     public private(set) var serviceProviders = [String: ServiceProvider]()
-    internal private(set) var viewControllerProviders = [ViewControllerProvider<T, C>]()
+    private(set) var viewControllerProviders = [ViewControllerProvider<T, C>]()
 
     public init(registry: Registry<T, C>) {
         self.registry = registry
@@ -39,7 +39,7 @@ public class Registrar<T, C> {
                 viewControllerProviderFunctions: resolver.viewControllerProviderFunctions())
     }
 
-    internal func createServiceProviders(functions: [ServiceProviderFunction], context: ServiceProviderCreationContext) {
+    func createServiceProviders(functions: [ServiceProviderFunction], context: ServiceProviderCreationContext) {
         for function in functions {
             let serviceProvider = function(context)
             let name = serviceProvider.name
@@ -47,7 +47,7 @@ public class Registrar<T, C> {
         }
     }
 
-    internal func registerViewControllerProviders(functions: [ViewControllerProviderFunction]) {
+    func registerViewControllerProviders(functions: [ViewControllerProviderFunction]) {
         for function in functions {
             let viewControllerProvider = function()
             viewControllerProvider.register(with: registry)

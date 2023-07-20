@@ -1,4 +1,4 @@
-name: SampleAppSPM
+name: SampleApp
 schemes:
   App:
     build:
@@ -6,10 +6,10 @@ schemes:
         App: all
 options:
   bundleIdPrefix: uk.co.cerihughes
-packages:
+projectReferences:
   Provident:
-    url: https://github.com/cerihughes/Provident
-    branch: master
+    path: ../Provident.xcodeproj
+packages:
   SnapKit:
     url: https://github.com/SnapKit/SnapKit
     from: 5.0.0
@@ -17,7 +17,7 @@ targets:
   App:
     type: application
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "13.0"
     settings:
       INFOPLIST_FILE: Resources/Info.plist
       DEVELOPMENT_TEAM: Y56955G4Q8
@@ -25,5 +25,5 @@ targets:
       - Source
       - Resources
     dependencies:
-      - package: Provident
+      - target: Provident/Provident
       - package: SnapKit

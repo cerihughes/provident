@@ -1,0 +1,35 @@
+name: Provident
+schemes:
+  Provident:
+    build:
+      targets:
+        Provident: all
+        ProvidentTests: [test]
+    test:
+      gatherCoverageData: true
+      coverageTargets:
+        - Provident
+      targets: 
+        - ProvidentTests
+options:
+  bundleIdPrefix: uk.co.cerihughes
+  deploymentTarget:
+    iOS: "13.0"
+targets:
+  Provident:
+    type: framework
+    platform: iOS
+    settings:
+      INFOPLIST_FILE: Source/Info.plist
+    sources:
+      - Source
+    postCompileScripts:
+      - script: export PATH="/opt/homebrew/bin:$PATH";swiftlint
+        name: Swift Lint
+        basedOnDependencyAnalysis: false
+  ProvidentTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: Tests
+    dependencies:
+      - target: Provident

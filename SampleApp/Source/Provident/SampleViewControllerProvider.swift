@@ -7,17 +7,19 @@
 
 import Provident
 
-class SampleViewControllerProvider: SingleViewControllerProvider<Navigation, Void> {
+class SampleViewControllerProvider: ViewControllerProvider {
     weak var registry: Registry<Navigation, Void>?
     var serviceProvider: SampleServiceProvider?
 
-    override func register(with registry: Registry<Navigation, Void>) {
-        super.register(with: registry)
+    func register(with registry: Registry<Navigation, Void>) {
         self.registry = registry
     }
 
-    override final func configure(with serviceProviders: [String: ServiceProvider]) {
-        super.configure(with: serviceProviders)
+    final func configure(with serviceProviders: [String: ServiceProvider]) {
         serviceProvider = serviceProviders[sampleServiceProviderName] as? SampleServiceProvider
+    }
+
+    func createViewController(token: Navigation, context: ()) -> Provident.ViewController? {
+        nil // OVERRIDE
     }
 }

@@ -11,9 +11,7 @@ let sampleServiceProviderName = "sampleServiceProviderName"
 
 class SampleServiceProvider: ServiceProvider {
     let authenticationService: AuthenticationService = AuthenticationServiceImplementation()
+    let name = sampleServiceProviderName
 
-    override init(context: ServiceProviderCreationContext) {
-        super.init(context: context)
-        name = sampleServiceProviderName
-    }
+    required init(context: ServiceProviderCreationContext) {}
 }

@@ -10,6 +10,7 @@ build/
 DerivedData/
 Provident.xcodeproj/
 ProvidentSPM.xcodeproj/
+SampleApp/SampleApp.xcodeproj/
 
 ## Various settings
 *.pbxuser

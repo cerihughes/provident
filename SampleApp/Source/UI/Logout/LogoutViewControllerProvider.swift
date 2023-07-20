@@ -5,11 +5,10 @@
 //  Created by Ceri Hughes on 24/10/2020.
 //
 
-import Provident
 import UIKit
 
 class LogoutViewControllerProvider: SampleViewControllerProvider {
-    override func createViewController(token: Navigation, context: Void) -> ViewController? {
+    override func createViewController(token: Navigation, context: Void) -> UIViewController? {
         guard
             token == .logout,
             let registry = self.registry,

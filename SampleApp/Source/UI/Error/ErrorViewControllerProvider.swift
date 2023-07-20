@@ -5,8 +5,7 @@
 //  Created by Ceri Hughes on 24/10/2020.
 //
 
-import Provident
-import SwiftUI
+import UIKit
 
 class ErrorViewControllerProvider: SampleViewControllerProvider {
     override func createViewController(token: Navigation, context: Void) -> UIViewController? {

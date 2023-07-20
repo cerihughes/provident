@@ -5,7 +5,7 @@
 //  Created by Ceri Hughes on 24/10/2020.
 //
 
-import Combine
+import Foundation
 
 class ErrorViewModel {
     let message: String

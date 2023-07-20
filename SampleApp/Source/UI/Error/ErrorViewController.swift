@@ -5,7 +5,6 @@
 //  Created by Ceri Hughes on 23/10/2020.
 //
 
-import Provident
 import UIKit
 
 class ErrorViewController: UIViewController {

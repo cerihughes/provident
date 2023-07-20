@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
         viewModel.login { [weak self] result in
             guard let self = self, let window = self.view.window else { return }
             let nextToken: Navigation = result ? .logout : .error(message: "Incorrect username or password")
-            nextToken.navigate(using: registry, from: self, in: window)
+            nextToken.navigate(using: self.registry, from: self, in: window)
         }
     }
 }

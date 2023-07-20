@@ -1,9 +1,9 @@
 name: SampleApp
 schemes:
-  App:
+  SampleApp:
     build:
       targets:
-        App: all
+        SampleApp: all
 options:
   bundleIdPrefix: uk.co.cerihughes
 projectReferences:
@@ -14,7 +14,7 @@ packages:
     url: https://github.com/SnapKit/SnapKit
     from: 5.0.0
 targets:
-  App:
+  SampleApp:
     type: application
     platform: iOS
     deploymentTarget: "13.0"

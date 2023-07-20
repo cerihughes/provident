@@ -1,6 +1,6 @@
 //
 //  Navigation+Presentation.swift
-//  App
+//  SampleApp
 //
 //  Created by Ceri Hughes on 28/10/2020.
 //

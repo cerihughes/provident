@@ -1,6 +1,6 @@
 //
 //  ErrorViewControllerProvider.swift
-//  App
+//  SampleApp
 //
 //  Created by Ceri Hughes on 24/10/2020.
 //

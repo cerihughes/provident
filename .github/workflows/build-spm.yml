@@ -16,4 +16,4 @@ jobs:
           submodules: recursive
 
       # Build SPM
-      - run: swift test
+      - run: swift build

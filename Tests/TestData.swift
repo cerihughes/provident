@@ -31,7 +31,7 @@ class TestServiceProvider: ServiceProvider {
     required init(context: ServiceProviderCreationContext) {}
 }
 
-class TestViewControllerProviderFactory {
+enum TestViewControllerProviderFactory {
     static var created = false
     static func createViewControllerProvider() -> any ViewControllerProvider<String, Void> {
         created = true
@@ -39,7 +39,7 @@ class TestViewControllerProviderFactory {
     }
 }
 
-class TestServiceProviderFactory {
+enum TestServiceProviderFactory {
     static var created = false
     static func createServiceProvider(context: ServiceProviderCreationContext) -> ServiceProvider {
         created = true

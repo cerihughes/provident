@@ -25,8 +25,10 @@ class RegistrarTests: XCTestCase {
 
         let testServiceProviderFunctions = [TestServiceProviderFactory.createServiceProvider]
         let testViewControllerProviderFunctions = [TestViewControllerProviderFactory.createViewControllerProvider]
-        resolver = TestResolver(testServiceProviderFunctions: testServiceProviderFunctions,
-                                testViewControllerProviderFunctions: testViewControllerProviderFunctions)
+        resolver = TestResolver(
+            testServiceProviderFunctions: testServiceProviderFunctions,
+            testViewControllerProviderFunctions: testViewControllerProviderFunctions
+        )
         registry = Registry()
         registrar = Registrar(registry: registry)
     }

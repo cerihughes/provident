@@ -60,8 +60,10 @@ class RegistryAPITests: XCTestCase {
         XCTAssertNil(registry.createViewController(from: "Test"))
         XCTAssertNil(registry.createViewController(from: "Test", context: ()))
 
-        let resolver = TestResolver(testServiceProviderFunctions: serviceProviderFunctions,
-                                    testViewControllerProviderFunctions: viewControllerProviderFunctions)
+        let resolver = TestResolver(
+            testServiceProviderFunctions: serviceProviderFunctions,
+            testViewControllerProviderFunctions: viewControllerProviderFunctions
+        )
         registrar.resolve(resolver: resolver)
 
         XCTAssertNotNil(registry.createViewController(from: "Test"))

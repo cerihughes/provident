@@ -17,6 +17,6 @@ open class SingleViewControllerProvider<T, C>: ViewControllerProvider<T, C> {
 
     open func createViewController(token: T, context: C) -> ViewController? {
         // OVERRIDE
-        return nil
+        nil
     }
 }

@@ -11,7 +11,7 @@ class LoginViewControllerProvider: SampleViewControllerProvider {
     override func createViewController(token: Navigation, context: Void) -> UIViewController? {
         guard
             token == .login,
-            let registry = self.registry,
+            let registry = registry,
             let authenticationService = serviceProvider?.authenticationService
         else {
             return nil

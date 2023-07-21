@@ -13,8 +13,10 @@ class TestResolver: Resolver<String, Void> {
     private let testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction]
     private let testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]
 
-    init(testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction],
-         testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]) {
+    init(
+        testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction],
+        testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]
+    ) {
         self.testServiceProviderFunctions = testServiceProviderFunctions
         self.testViewControllerProviderFunctions = testViewControllerProviderFunctions
 

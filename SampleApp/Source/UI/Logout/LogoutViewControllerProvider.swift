@@ -11,7 +11,7 @@ class LogoutViewControllerProvider: SampleViewControllerProvider {
     override func createViewController(token: Navigation, context: Void) -> UIViewController? {
         guard
             token == .logout,
-            let registry = self.registry,
+            let registry = registry,
             let authenticationService = serviceProvider?.authenticationService
         else {
             return nil

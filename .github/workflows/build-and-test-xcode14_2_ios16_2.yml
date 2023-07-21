@@ -24,6 +24,9 @@ jobs:
       - run: set -o pipefail
       - run: mkdir build
       - run: xcodegen
-      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=16.2,name=iPhone 11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -resultBundlePath coverage.xcresult -destination "OS=16.2,name=iPhone 11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO
       - name: Codecov
-        uses: codecov/codecov-action@v1.0.13
+        uses: codecov/codecov-action@v3.1.0
+        with:
+            xcode: true
+            xcode_archive_path: ${{ github.workspace }}/coverage.xcresult

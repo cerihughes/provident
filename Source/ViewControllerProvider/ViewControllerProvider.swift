@@ -9,8 +9,16 @@
 import Foundation
 
 /// A class that provides a VC (or a number of VCs) for a given token by registering with a ViewControllerRegistry.
-open class ViewControllerProvider<T, C> {
-    public init() {}
-    open func register(with _: Registry<T, C>) {}
-    open func configure(with _: [String: ServiceProvider]) {}
+public protocol ViewControllerProvider<T, C> {
+    associatedtype T
+    associatedtype C
+
+    func register(with _: Registry<T, C>)
+    func configure(with _: [String: ServiceProvider])
+    func createViewController(token: T, context: C) -> ViewController?
+}
+
+public extension ViewControllerProvider {
+    func register(with _: Registry<T, C>) {}
+    func configure(with _: [String: ServiceProvider]) {}
 }

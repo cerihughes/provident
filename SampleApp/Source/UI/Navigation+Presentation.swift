@@ -46,7 +46,7 @@ extension UIWindow {
     ) {
         rootViewController = viewController
 
-        if let options = options {
+        if let options {
             UIView.transition(with: self, duration: duration, options: options, animations: {})
         }
     }

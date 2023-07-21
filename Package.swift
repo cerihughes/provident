@@ -1,9 +1,9 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
     name: "Provident",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v16), .macOS(.v13)],
     products: [
         .library(name: "Provident", targets: ["Provident"])
     ],

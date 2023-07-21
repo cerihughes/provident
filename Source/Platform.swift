@@ -12,6 +12,7 @@ public typealias ViewController = UIViewController
 public typealias LaunchOptions = [UIApplication.LaunchOptionsKey: Any]
 #elseif canImport(AppKit)
 import AppKit
+import Foundation
 public typealias ViewController = NSViewController
 public typealias LaunchOptions = Notification
 #endif

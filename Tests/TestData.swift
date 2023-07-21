@@ -8,33 +8,32 @@
 
 @testable import Provident
 
-class TestViewControllerProvider: SingleViewControllerProvider<String, Void> {
+class TestViewControllerProvider: ViewControllerProvider {
     var registered = false, unregistered = false
     var capturedServiceProviders: [String: ServiceProvider]?
-    override func register(with registry: Registry<String, Void>) {
-        super.register(with: registry)
+
+    func register(with registry: Registry<String, Void>) {
         registered = true
     }
 
-    override func configure(with serviceProviders: [String: ServiceProvider]) {
+    func configure(with serviceProviders: [String: ServiceProvider]) {
         capturedServiceProviders = serviceProviders
     }
 
-    override func createViewController(token: String, context: Void) -> ViewController? {
+    func createViewController(token: String, context: Void) -> ViewController? {
         ViewController(title: token)
     }
 }
 
 class TestServiceProvider: ServiceProvider {
-    override init(context: ServiceProviderCreationContext) {
-        super.init(context: context)
-        name = String(describing: TestServiceProvider.self)
-    }
+    var name = String(describing: TestServiceProvider.self)
+
+    required init(context: ServiceProviderCreationContext) {}
 }
 
 enum TestViewControllerProviderFactory {
     static var created = false
-    static func createViewControllerProvider() -> ViewControllerProvider<String, Void> {
+    static func createViewControllerProvider() -> any ViewControllerProvider<String, Void> {
         created = true
         return TestViewControllerProvider()
     }

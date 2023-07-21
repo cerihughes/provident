@@ -1,14 +1,14 @@
-name: Test Xcode 13.2 iOS 15.2
+name: Test Xcode 14.2 iOS 16.2
 
 on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-12
 
     steps:
       # Xcode select
-      - run: sudo xcode-select -switch /Applications/Xcode_13.2.app
+      - run: sudo xcode-select -switch /Applications/Xcode_14.2.app
 
       # Install dependencies
       - run: brew install swiftlint xcodegen || true
@@ -24,6 +24,6 @@ jobs:
       - run: set -o pipefail
       - run: mkdir build
       - run: xcodegen
-      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=15.2,name=iPhone 11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -destination "OS=16.2,name=iPhone 11" -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO
       - name: Codecov
         uses: codecov/codecov-action@v1.0.13

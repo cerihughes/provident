@@ -8,14 +8,17 @@
 import Provident
 import UIKit
 
-class SampleResolver: Resolver<Navigation, Void> {
-    override func serviceProviderFunctions() -> [Registrar<Navigation, Void>.ServiceProviderFunction] {
+class SampleResolver: Resolver {
+    typealias T = Navigation
+    typealias C = Void
+
+    func serviceProviderFunctions() -> [Registrar<Navigation, Void>.ServiceProviderFunction] {
         [
             SampleServiceProvider.init(context:)
         ]
     }
 
-    override func viewControllerProviderFunctions() -> [Registrar<Navigation, Void>.ViewControllerProviderFunction] {
+    func viewControllerProviderFunctions() -> [Registrar<Navigation, Void>.ViewControllerProviderFunction] {
         [
             LoginViewControllerProvider.init,
             LogoutViewControllerProvider.init,

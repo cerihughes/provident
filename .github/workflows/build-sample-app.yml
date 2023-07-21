@@ -1,14 +1,14 @@
-name: Build Sample App on Xcode 13.2 iOS 15.2
+name: Build Sample App on Xcode 14.2 iOS 16.2
 
 on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-12
 
     steps:
       # Xcode select
-      - run: sudo xcode-select -switch /Applications/Xcode_13.2.app
+      - run: sudo xcode-select -switch /Applications/Xcode_14.2.app
 
       # Install dependencies
       - run: brew install swiftlint xcodegen || true

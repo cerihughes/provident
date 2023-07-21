@@ -105,7 +105,7 @@ class RegistryTests: XCTestCase {
             }
 
             let title: String
-            if let context = context {
+            if let context {
                 title = "functionWithContext \(limit):\(context)"
             } else {
                 title = "function \(limit)"

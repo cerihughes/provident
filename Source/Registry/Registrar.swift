@@ -10,12 +10,12 @@ import Foundation
 
 public class Registrar<T, C> {
     public typealias ServiceProviderFunction = (ServiceProviderCreationContext) -> ServiceProvider
-    public typealias ViewControllerProviderFunction = () -> ViewControllerProvider<T, C>
+    public typealias ViewControllerProviderFunction = () -> any ViewControllerProvider<T, C>
 
     public let registry: Registry<T, C>
 
     public private(set) var serviceProviders = [String: ServiceProvider]()
-    private(set) var viewControllerProviders = [ViewControllerProvider<T, C>]()
+    private(set) var viewControllerProviders = [any ViewControllerProvider<T, C>]()
 
     public init(registry: Registry<T, C>) {
         self.registry = registry
@@ -36,7 +36,7 @@ public class Registrar<T, C> {
         registerViewControllerProviders(functions: viewControllerProviderFunctions)
     }
 
-    public func resolve(resolver: Resolver<T, C>, launchOptions: LaunchOptions? = nil) {
+    public func resolve(resolver: some Resolver<T, C>, launchOptions: LaunchOptions? = nil) {
         resolve(
             serviceProviderFunctions: resolver.serviceProviderFunctions(),
             viewControllerProviderFunctions: resolver.viewControllerProviderFunctions()
@@ -55,6 +55,7 @@ public class Registrar<T, C> {
         for function in functions {
             let viewControllerProvider = function()
             viewControllerProvider.register(with: registry)
+            registry.add(registryFunction: viewControllerProvider.createViewController(token:context:))
             viewControllerProvider.configure(with: serviceProviders)
             viewControllerProviders.append(viewControllerProvider)
         }

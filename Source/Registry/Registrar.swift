@@ -25,9 +25,11 @@ public class Registrar<T, C> {
         registry.reset()
     }
 
-    public func resolve(serviceProviderFunctions: [ServiceProviderFunction],
-                        viewControllerProviderFunctions: [ViewControllerProviderFunction],
-                        launchOptions: LaunchOptions? = nil) {
+    public func resolve(
+        serviceProviderFunctions: [ServiceProviderFunction],
+        viewControllerProviderFunctions: [ViewControllerProviderFunction],
+        launchOptions: LaunchOptions? = nil
+    ) {
         let context = ServiceProviderCreationContextImplementation()
         context.launchOptions = launchOptions
         createServiceProviders(functions: serviceProviderFunctions, context: context)
@@ -35,8 +37,10 @@ public class Registrar<T, C> {
     }
 
     public func resolve(resolver: Resolver<T, C>, launchOptions: LaunchOptions? = nil) {
-        resolve(serviceProviderFunctions: resolver.serviceProviderFunctions(),
-                viewControllerProviderFunctions: resolver.viewControllerProviderFunctions())
+        resolve(
+            serviceProviderFunctions: resolver.serviceProviderFunctions(),
+            viewControllerProviderFunctions: resolver.viewControllerProviderFunctions()
+        )
     }
 
     func createServiceProviders(functions: [ServiceProviderFunction], context: ServiceProviderCreationContext) {

@@ -6,7 +6,6 @@
 //  Copyright © 2023 Ceri Hughes. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 @testable import Provident
@@ -28,7 +27,7 @@ class ViewControllerProviderTests: XCTestCase {
 
 private class ViewControllerProviderForTesting: ViewControllerProvider {
     func createViewController(token: String, context: Void) -> ViewController? {
-        UIViewController(title: token)
+        ViewController(title: token)
     }
 }
 

@@ -15,6 +15,7 @@ options:
   bundleIdPrefix: uk.co.cerihughes
   deploymentTarget:
     iOS: "16.0"
+    macOS: "13.0"
 targets:
   Provident:
     type: framework

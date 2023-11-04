@@ -1,4 +1,4 @@
-name: Build SPM
+name: Build spm
 
 on: [push, pull_request]
 

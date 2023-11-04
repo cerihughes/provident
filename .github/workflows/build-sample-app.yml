@@ -1,14 +1,18 @@
-name: Build Sample App on Xcode 14.2 iOS 16.2
+name: Build sample app
 
 on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-12
+    strategy:
+      matrix:
+        xcode: [14.3.1, 15.0.1]
+
+    runs-on: macos-13
 
     steps:
       # Xcode select
-      - run: sudo xcode-select -switch /Applications/Xcode_14.2.app
+      - run: sudo xcode-select -switch /Applications/Xcode_${{ matrix.xcode }}.app
 
       # Install dependencies
       - run: brew install swiftlint xcodegen || true
@@ -22,6 +26,5 @@ jobs:
 
       # Build Sample
       - run: xcodegen
-      - run: cd SampleApp; xcodegen
       - run: cd SampleApp; xcodegen
       - run: xcodebuild clean build -project SampleApp/SampleApp.xcodeproj -scheme SampleApp -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO

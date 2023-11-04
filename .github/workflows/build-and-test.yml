@@ -1,0 +1,62 @@
+name: Build and test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        xcode: [14.3.1, 15.0.1]
+        sdk: [iphonesimulator, macosx, appletvsimulator]
+        include:
+          - name: "iPhone 14"
+            sdk: iphonesimulator
+          - name: "Any Mac"
+            sdk: macosx
+          - name: "Apple TV"
+            sdk: appletvsimulator
+          - os: "16.4"
+            sdk: iphonesimulator
+            xcode: 14.3.1
+          - os: "17.0.1"
+            sdk: iphonesimulator
+            xcode: 15.0.1
+          - os: "13.3"
+            sdk: macosx
+            xcode: 14.3.1
+          - os: "14.0"
+            sdk: macosx
+            xcode: 15.0.1
+          - os: "16.4"
+            sdk: appletvsimulator
+            xcode: 14.3.1
+          - os: "17.0"
+            sdk: appletvsimulator
+            xcode: 15.0.1
+
+    runs-on: macos-13
+
+    steps:
+      # Xcode select
+      - run: sudo xcode-select -switch /Applications/Xcode_${{ matrix.xcode }}.app
+
+      # Install dependencies
+      - run: brew install swiftlint xcodegen || true
+      - run: brew outdated swiftlint || brew upgrade swiftlint
+      - run: brew install xcodegen@2.38.0 || true
+
+      # Checkout
+      - uses: actions/checkout@v1
+        with:
+          submodules: recursive
+
+      # Build and test
+      - run: set -o pipefail
+      - run: mkdir build
+      - run: xcodegen
+      - run: xcodebuild clean test -project Provident.xcodeproj -scheme Provident -resultBundlePath coverage.xcresult -destination "OS=${{ matrix.os }},name=${{ matrix.name }}" -sdk ${{ matrix.sdk }} CODE_SIGNING_REQUIRED=NO
+      - name: Codecov
+        uses: codecov/codecov-action@v3.1.0
+        with:
+            xcode: true
+            xcode_archive_path: ${{ github.workspace }}/coverage.xcresult

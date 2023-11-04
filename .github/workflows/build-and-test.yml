@@ -15,22 +15,22 @@ jobs:
             sdk: macosx
           - name: "Apple TV"
             sdk: appletvsimulator
-          - os: 16.4
+          - os: "16.4"
             sdk: iphonesimulator
             xcode: 14.3.1
-          - os: 17.0.1
+          - os: "17.0.1"
             sdk: iphonesimulator
             xcode: 15.0.1
-          - os: 13.3
+          - os: "13.3"
             sdk: macosx
             xcode: 14.3.1
-          - os: 14.0
+          - os: "14.0"
             sdk: macosx
             xcode: 15.0.1
-          - os: 16.4
+          - os: "16.4"
             sdk: appletvsimulator
             xcode: 14.3.1
-          - os: 17.0
+          - os: "17.0"
             sdk: appletvsimulator
             xcode: 15.0.1
 

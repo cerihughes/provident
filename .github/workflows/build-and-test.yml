@@ -1,4 +1,4 @@
-name: Test Xcode 14.2 iOS 16.2
+name: Build and test
 
 on: [push, pull_request]
 

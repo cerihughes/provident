@@ -43,7 +43,7 @@ jobs:
       # Install dependencies
       - run: brew install swiftlint xcodegen || true
       - run: brew outdated swiftlint || brew upgrade swiftlint
-      - run: brew outdated xcodegen || brew upgrade xcodegen
+      - run: brew install xcodegen@2.38.0 || true
 
       # Checkout
       - uses: actions/checkout@v1

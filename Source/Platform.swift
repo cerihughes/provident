@@ -1,7 +1,4 @@
 //
-//  Platform.swift
-//  Provident
-//
 //  Created by Ceri Hughes on 26/09/2020.
 //  Copyright © 2020 Ceri Hughes. All rights reserved.
 //

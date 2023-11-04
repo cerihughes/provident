@@ -1,7 +1,4 @@
 //
-//  ResolverTests.swift
-//  ProvidentTests
-//
 //  Created by Ceri Hughes on 23/07/2023.
 //  Copyright © 2023 Ceri Hughes. All rights reserved.
 //

@@ -4,8 +4,6 @@ on: [push, pull_request]
 
 jobs:
   build:
-jobs:
-  build:
     strategy:
       matrix:
         xcode: [14.3.1, 15.0.1]

@@ -19,10 +19,9 @@ targets:
     platform: iOS
     deploymentTarget: "16.0"
     settings:
-      INFOPLIST_FILE: Resources/Info.plist
+      INFOPLIST_FILE: SampleApp/Info.plist
     sources:
-      - Source
-      - Resources
+      - SampleApp
     dependencies:
       - target: Provident/Provident
       - package: SnapKit

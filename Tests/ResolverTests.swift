@@ -12,7 +12,7 @@ class ResolverTests: XCTestCase {
     /// Tests a Resolver implementation that uses the default serviceProviderFunctions and
     /// viewControllerProviderFunctions implementations
     func testBareMinResolver() {
-        let registry = Registry<String, Void>()
+        let registry = RegistryImplementation<String, Void>()
         let registrar = Registrar(registry: registry)
         registrar.resolve(resolver: ResolverForTesting())
 
@@ -24,4 +24,6 @@ class ResolverTests: XCTestCase {
 private class ResolverForTesting: Resolver {
     typealias T = String
     typealias C = Void
+
+    func viewControllerProviderFunctions() -> [Provident.ViewControllerProviderFunction<String, Void>] { [] }
 }

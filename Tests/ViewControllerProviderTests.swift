@@ -12,7 +12,7 @@ class ViewControllerProviderTests: XCTestCase {
     /// Tests a ViewControllerProvider implementation that uses the default register(with:) and configure(with:)
     /// implementations
     func testBareMinViewControllerProvider() {
-        let registry = Registry<String, Void>()
+        let registry = RegistryImplementation<String, Void>()
         let registrar = Registrar(registry: registry)
         registrar.resolve(resolver: ResolverForTesting())
 
@@ -32,7 +32,7 @@ private class ResolverForTesting: Resolver {
     typealias T = String
     typealias C = Void
 
-    func viewControllerProviderFunctions() -> [Registrar<String, Void>.ViewControllerProviderFunction] {
+    func viewControllerProviderFunctions() -> [ViewControllerProviderFunction<T, C>] {
         [
             ViewControllerProviderForTesting.init
         ]

@@ -12,13 +12,13 @@ class SampleResolver: Resolver {
     typealias T = Navigation
     typealias C = Void
 
-    func serviceProviderFunctions() -> [Registrar<Navigation, Void>.ServiceProviderFunction] {
+    func serviceProviderFunctions() -> [ServiceProviderFunction] {
         [
             SampleServiceProvider.init(context:)
         ]
     }
 
-    func viewControllerProviderFunctions() -> [Registrar<Navigation, Void>.ViewControllerProviderFunction] {
+    func viewControllerProviderFunctions() -> [ViewControllerProviderFunction<T, C>] {
         [
             LoginViewControllerProvider.init,
             LogoutViewControllerProvider.init,

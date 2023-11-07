@@ -10,12 +10,12 @@ import UIKit
 
 class SampleUI {
     private let window: UIWindow
-    private let registry: Registry<Navigation, Void>
+    private let registry: RegistryImplementation<Navigation, Void>
     private let registrar: Registrar<Navigation, Void>
 
     init(window: UIWindow) {
         self.window = window
-        registry = Registry()
+        registry = RegistryImplementation()
         registrar = Registrar(registry: registry)
         registrar.resolve(resolver: SampleResolver())
     }

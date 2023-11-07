@@ -7,13 +7,13 @@ import Provident // To test the API we must NOT use @testable
 import XCTest
 
 class RegistryAPITests: XCTestCase {
-    private var registry: Registry<String, Void>!
+    private var registry: RegistryImplementation<String, Void>!
     private var registrar: Registrar<String, Void>!
 
     override func setUp() {
         super.setUp()
 
-        registry = Registry()
+        registry = RegistryImplementation()
         registrar = Registrar(registry: registry)
     }
 
@@ -25,11 +25,11 @@ class RegistryAPITests: XCTestCase {
     }
 
     func testResolveFunctions() {
-        let serviceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction] = [
+        let serviceProviderFunctions: [ServiceProviderFunction] = [
             TestServiceProvider.init(context:)
         ]
 
-        let viewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction] = [
+        let viewControllerProviderFunctions: [ViewControllerProviderFunction] = [
             TestViewControllerProvider.init
         ]
 
@@ -46,11 +46,11 @@ class RegistryAPITests: XCTestCase {
     }
 
     func testResolveResolver() {
-        let serviceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction] = [
+        let serviceProviderFunctions: [ServiceProviderFunction] = [
             TestServiceProvider.init(context:)
         ]
 
-        let viewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction] = [
+        let viewControllerProviderFunctions: [ViewControllerProviderFunction] = [
             TestViewControllerProvider.init
         ]
 

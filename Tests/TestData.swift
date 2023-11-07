@@ -9,7 +9,7 @@ class TestViewControllerProvider: ViewControllerProvider {
     var registered = false, unregistered = false
     var capturedServiceProviders: [String: ServiceProvider]?
 
-    func register(with registry: Registry<String, Void>) {
+    func register(with registry: AnyRegistry<String, Void>) {
         registered = true
     }
 

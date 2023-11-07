@@ -5,17 +5,19 @@
 
 import Foundation
 
-/// A class that provides a VC (or a number of VCs) for a given token by registering with a ViewControllerRegistry.
+public typealias AnyViewControllerProvider<T, C> = any ViewControllerProvider<T, C>
+
+/// A type that provides a VC (or a number of VCs) for a given token by registering with a ViewControllerRegistry.
 public protocol ViewControllerProvider<T, C> {
     associatedtype T
     associatedtype C
 
-    func register(with _: Registry<T, C>)
-    func configure(with _: [String: ServiceProvider])
+    func register(with registry: AnyRegistry<T, C>)
+    func configure(with serviceProviders: [String: ServiceProvider])
     func createViewController(token: T, context: C) -> ViewController?
 }
 
 public extension ViewControllerProvider {
-    func register(with _: Registry<T, C>) {}
-    func configure(with _: [String: ServiceProvider]) {}
+    func register(with registry: AnyRegistry<T, C>) {}
+    func configure(with serviceProviders: [String: ServiceProvider]) {}
 }

@@ -8,10 +8,10 @@
 import Provident
 
 class SampleViewControllerProvider: ViewControllerProvider {
-    weak var registry: Registry<Navigation, Void>?
+    weak var registry: AnyRegistry<Navigation, Void>?
     var serviceProvider: SampleServiceProvider?
 
-    func register(with registry: Registry<Navigation, Void>) {
+    func register(with registry: AnyRegistry<Navigation, Void>) {
         self.registry = registry
     }
 

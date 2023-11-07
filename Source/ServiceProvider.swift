@@ -7,5 +7,12 @@ import Foundation
 
 public protocol ServiceProvider {
     var name: String { get }
-    init(context _: ServiceProviderCreationContext)
+}
+
+public protocol ServiceProviderCreationContext {
+    var launchOptions: LaunchOptions? { get }
+}
+
+class ServiceProviderCreationContextImplementation: ServiceProviderCreationContext {
+    var launchOptions: LaunchOptions?
 }

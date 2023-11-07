@@ -15,7 +15,7 @@ class RegistrarTests: XCTestCase {
     // MARK: Test Data
 
     private var resolver: TestResolver!
-    private var registry: Registry<String, Void>!
+    private var registry: RegistryImplementation<String, Void>!
 
     override func setUp() {
         super.setUp()
@@ -26,7 +26,7 @@ class RegistrarTests: XCTestCase {
             testServiceProviderFunctions: testServiceProviderFunctions,
             testViewControllerProviderFunctions: testViewControllerProviderFunctions
         )
-        registry = Registry()
+        registry = RegistryImplementation()
         registrar = Registrar(registry: registry)
     }
 

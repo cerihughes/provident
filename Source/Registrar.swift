@@ -29,7 +29,7 @@ public class Registrar<T, C> {
         registerViewControllerProviders(functions: viewControllerProviderFunctions)
     }
 
-    public func resolve(resolver: some Resolver<T, C>, launchOptions: LaunchOptions? = nil) {
+    public func resolve(resolver: AnyResolver<T, C>, launchOptions: LaunchOptions? = nil) {
         resolve(
             serviceProviderFunctions: resolver.serviceProviderFunctions(),
             viewControllerProviderFunctions: resolver.viewControllerProviderFunctions()

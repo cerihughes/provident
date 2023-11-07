@@ -10,17 +10,15 @@ import UIKit
 
 class SampleUI {
     private let window: UIWindow
-    private let registry: RegistryImplementation<Navigation, Void>
     private let registrar: Registrar<Navigation, Void>
 
     init(window: UIWindow) {
         self.window = window
-        registry = RegistryImplementation()
-        registrar = Registrar(registry: registry)
+        registrar = Registrar()
         registrar.resolve(resolver: SampleResolver())
     }
 
     func showInitialUI() -> Bool {
-        Navigation.login.navigate(using: registry, from: nil, in: window)
+        Navigation.login.navigate(using: registrar.registry, from: nil, in: window)
     }
 }

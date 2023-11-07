@@ -7,18 +7,15 @@ import Provident // To test the API we must NOT use @testable
 import XCTest
 
 class RegistryAPITests: XCTestCase {
-    private var registry: RegistryImplementation<String, Void>!
     private var registrar: Registrar<String, Void>!
 
     override func setUp() {
         super.setUp()
 
-        registry = RegistryImplementation()
-        registrar = Registrar(registry: registry)
+        registrar = Registrar()
     }
 
     override func tearDown() {
-        registry = nil
         registrar = nil
 
         super.tearDown()
@@ -33,6 +30,7 @@ class RegistryAPITests: XCTestCase {
             TestViewControllerProvider.init
         ]
 
+        let registry = registrar.registry
         XCTAssertNil(registry.createViewController(from: "Test"))
         XCTAssertNil(registry.createViewController(from: "Test", context: ()))
 
@@ -54,6 +52,7 @@ class RegistryAPITests: XCTestCase {
             TestViewControllerProvider.init
         ]
 
+        let registry = registrar.registry
         XCTAssertNil(registry.createViewController(from: "Test"))
         XCTAssertNil(registry.createViewController(from: "Test", context: ()))
 

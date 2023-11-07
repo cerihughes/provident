@@ -25,7 +25,7 @@ public protocol Registry<T, C>: AnyObject {
 /// Note that registrants should make sure they don't "overlap" - if more than 1 registrant could potentially return a
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
-public class RegistryImplementation<T, C>: Registry {
+class RegistryImplementation<T, C>: Registry {
     public typealias RegistryFunction = (T, C) -> ViewController?
 
     private var functions = [RegistryFunction]()

@@ -6,17 +6,17 @@
 import Foundation
 
 public class Registrar<T, C> {
-    public let registry: RegistryImplementation<T, C>
+    private let registryImplementation = RegistryImplementation<T, C>()
     public private(set) var serviceProviders = [String: ServiceProvider]()
     public private(set) var viewControllerProviders = [AnyViewControllerProvider<T, C>]()
 
-    public init(registry: RegistryImplementation<T, C>) {
-        self.registry = registry
-    }
+    public init() {}
 
     deinit {
-        registry.reset()
+        registryImplementation.reset()
     }
+
+    public var registry: AnyRegistry<T, C> { registryImplementation }
 
     public func resolve(
         serviceProviderFunctions: [ServiceProviderFunction],
@@ -47,8 +47,8 @@ public class Registrar<T, C> {
     func registerViewControllerProviders(functions: [ViewControllerProviderFunction<T, C>]) {
         for function in functions {
             let viewControllerProvider = function()
-            viewControllerProvider.register(with: registry)
-            registry.add(registryFunction: viewControllerProvider.createViewController(token:context:))
+            viewControllerProvider.register(with: registryImplementation)
+            registryImplementation.add(registryFunction: viewControllerProvider.createViewController(token:context:))
             viewControllerProvider.configure(with: serviceProviders)
             viewControllerProviders.append(viewControllerProvider)
         }

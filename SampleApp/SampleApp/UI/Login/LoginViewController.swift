@@ -10,10 +10,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
-    private let registry: Registry<Navigation, Void>
+    private let registry: AnyRegistry<Navigation, Void>
     private lazy var loginView = LoginView()
 
-    init(viewModel: LoginViewModel, registry: Registry<Navigation, Void>) {
+    init(viewModel: LoginViewModel, registry: AnyRegistry<Navigation, Void>) {
         self.viewModel = viewModel
         self.registry = registry
         super.init(nibName: nil, bundle: nil)

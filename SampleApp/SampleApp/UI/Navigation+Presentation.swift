@@ -11,7 +11,7 @@ import UIKit
 extension Navigation {
     @discardableResult
     func navigate(
-        using registry: Registry<Navigation, Void>,
+        using registry: AnyRegistry<Navigation, Void>,
         from previous: UIViewController?,
         in window: UIWindow
     ) -> Bool {

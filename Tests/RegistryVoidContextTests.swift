@@ -8,12 +8,12 @@ import XCTest
 @testable import Provident
 
 class RegistryVoidContextTests: XCTestCase {
-    private var registry: Registry<Int, Void>!
+    private var registry: RegistryImplementation<Int, Void>!
 
     override func setUp() {
         super.setUp()
 
-        registry = Registry()
+        registry = RegistryImplementation()
     }
 
     override func tearDown() {

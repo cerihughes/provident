@@ -10,10 +10,10 @@ import UIKit
 
 class LogoutViewController: UIViewController {
     private let viewModel: LogoutViewModel
-    private let registry: Registry<Navigation, Void>
+    private let registry: AnyRegistry<Navigation, Void>
     private lazy var logoutView = LogoutView()
 
-    init(viewModel: LogoutViewModel, registry: Registry<Navigation, Void>) {
+    init(viewModel: LogoutViewModel, registry: AnyRegistry<Navigation, Void>) {
         self.viewModel = viewModel
         self.registry = registry
         super.init(nibName: nil, bundle: nil)

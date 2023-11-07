@@ -7,32 +7,30 @@ import Provident // To test the API we must NOT use @testable
 import XCTest
 
 class RegistryAPITests: XCTestCase {
-    private var registry: Registry<String, Void>!
     private var registrar: Registrar<String, Void>!
 
     override func setUp() {
         super.setUp()
 
-        registry = Registry()
-        registrar = Registrar(registry: registry)
+        registrar = Registrar()
     }
 
     override func tearDown() {
-        registry = nil
         registrar = nil
 
         super.tearDown()
     }
 
     func testResolveFunctions() {
-        let serviceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction] = [
+        let serviceProviderFunctions: [ServiceProviderFunction] = [
             TestServiceProvider.init(context:)
         ]
 
-        let viewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction] = [
+        let viewControllerProviderFunctions: [ViewControllerProviderFunction] = [
             TestViewControllerProvider.init
         ]
 
+        let registry = registrar.registry
         XCTAssertNil(registry.createViewController(from: "Test"))
         XCTAssertNil(registry.createViewController(from: "Test", context: ()))
 
@@ -46,14 +44,15 @@ class RegistryAPITests: XCTestCase {
     }
 
     func testResolveResolver() {
-        let serviceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction] = [
+        let serviceProviderFunctions: [ServiceProviderFunction] = [
             TestServiceProvider.init(context:)
         ]
 
-        let viewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction] = [
+        let viewControllerProviderFunctions: [ViewControllerProviderFunction] = [
             TestViewControllerProvider.init
         ]
 
+        let registry = registrar.registry
         XCTAssertNil(registry.createViewController(from: "Test"))
         XCTAssertNil(registry.createViewController(from: "Test", context: ()))
 

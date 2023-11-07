@@ -8,12 +8,12 @@ import XCTest
 @testable import Provident
 
 class RegistryTests: XCTestCase {
-    private var registry: Registry<Int, String?>!
+    private var registry: RegistryImplementation<Int, String?>!
 
     override func setUp() {
         super.setUp()
 
-        registry = Registry()
+        registry = RegistryImplementation()
     }
 
     override func tearDown() {

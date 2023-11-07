@@ -10,22 +10,22 @@ class TestResolver: Resolver {
     typealias T = String
     typealias C = Void
 
-    private let testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction]
-    private let testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]
+    private let testServiceProviderFunctions: [ServiceProviderFunction]
+    private let testViewControllerProviderFunctions: [ViewControllerProviderFunction<T, C>]
 
     init(
-        testServiceProviderFunctions: [Registrar<String, Void>.ServiceProviderFunction],
-        testViewControllerProviderFunctions: [Registrar<String, Void>.ViewControllerProviderFunction]
+        testServiceProviderFunctions: [ServiceProviderFunction],
+        testViewControllerProviderFunctions: [ViewControllerProviderFunction<T, C>]
     ) {
         self.testServiceProviderFunctions = testServiceProviderFunctions
         self.testViewControllerProviderFunctions = testViewControllerProviderFunctions
     }
 
-    func serviceProviderFunctions() -> [Registrar<String, Void>.ServiceProviderFunction] {
+    func serviceProviderFunctions() -> [ServiceProviderFunction] {
         testServiceProviderFunctions
     }
 
-    func viewControllerProviderFunctions() -> [Registrar<String, Void>.ViewControllerProviderFunction] {
+    func viewControllerProviderFunctions() -> [ViewControllerProviderFunction<T, C>] {
         testViewControllerProviderFunctions
     }
 }

@@ -5,6 +5,15 @@
 
 import Foundation
 
+public typealias AnyRegistry<T, C> = any Registry<T, C>
+
+public protocol Registry<T, C>: AnyObject {
+    associatedtype T
+    associatedtype C
+
+    func createViewController(from token: T, context: C) -> ViewController?
+}
+
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to
 /// uniquely identify any VC, and also provide any data that the VC needs to be constructed.
 ///
@@ -16,18 +25,18 @@ import Foundation
 /// Note that registrants should make sure they don't "overlap" - if more than 1 registrant could potentially return a
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
-open class Registry<T, C> {
-    typealias RegistryFunction = (T, C) -> ViewController?
+class RegistryImplementation<T, C>: Registry {
+    public typealias RegistryFunction = (T, C) -> ViewController?
 
     private var functions = [RegistryFunction]()
 
     public init() {}
 
-    func add(registryFunction: @escaping RegistryFunction) {
+    public func add(registryFunction: @escaping RegistryFunction) {
         functions.append(registryFunction)
     }
 
-    func reset() {
+    public func reset() {
         functions.removeAll()
     }
 

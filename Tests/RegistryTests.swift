@@ -30,6 +30,7 @@ class RegistryTests: XCTestCase {
     func testRegisterFunction_providingContext() {
         registry.add(registryFunction: createFunction(limit: 10))
         XCTAssertNotNil(try registry.createViewController(token: 1, context: "Things"))
+        XCTAssertNotNil(registry.findViewController(token: 1, context: "Things"))
     }
 
     func testRegisterFunctionThrows_providingContext() {
@@ -51,6 +52,7 @@ class RegistryTests: XCTestCase {
     func testRegisterFunctionWithContext_withoutProvidingContext() {
         registry.add(registryFunction: createFunction(limit: 10))
         XCTAssertNotNil(try registry.createViewController(token: 1))
+        XCTAssertNotNil(registry.findViewController(token: 1))
     }
 
     func testRegisterFunctionWithContextThrows_withoutProvidingContext() {

@@ -15,7 +15,7 @@ extension Navigation {
         from previous: UIViewController?,
         in window: UIWindow
     ) -> Bool {
-        guard let viewController = registry.createViewController(from: self) else { return false }
+        guard let viewController = registry.findViewController(token: self) else { return false }
         present(viewController: viewController, from: previous, in: window)
         return true
     }

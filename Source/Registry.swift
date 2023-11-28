@@ -11,7 +11,17 @@ public protocol Registry<T, C>: AnyObject {
     associatedtype T
     associatedtype C
 
-    func createViewController(from token: T, context: C) -> ViewController?
+    func createViewController(token: T, context: C) throws -> ViewController
+}
+
+public extension Registry {
+    func findViewController(token: T, context: C) -> ViewController? {
+        try? createViewController(token: token, context: context)
+    }
+}
+
+public enum ProvidentError<T>: Error {
+    case noMatchingViewController(T)
 }
 
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to
@@ -26,39 +36,47 @@ public protocol Registry<T, C>: AnyObject {
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
 class RegistryImplementation<T, C>: Registry {
-    public typealias RegistryFunction = (T, C) -> ViewController?
+    typealias RegistryFunction = (T, C) -> ViewController?
 
     private var functions = [RegistryFunction]()
 
-    public init() {}
+    init() {}
 
-    public func add(registryFunction: @escaping RegistryFunction) {
+    func add(registryFunction: @escaping RegistryFunction) {
         functions.append(registryFunction)
     }
 
-    public func reset() {
+    func reset() {
         functions.removeAll()
     }
 
-    public func createViewController(from token: T, context: C) -> ViewController? {
+    func createViewController(token: T, context: C) throws -> ViewController {
         for function in functions {
             if let result = function(token, context) {
                 return result
             }
         }
 
-        return nil
+        throw ProvidentError.noMatchingViewController(token)
     }
 }
 
 public extension Registry {
-    func createViewController<Wrapped>(from token: T) -> ViewController? where C == Wrapped? {
-        createViewController(from: token, context: nil)
+    func createViewController<Wrapped>(token: T) throws -> ViewController where C == Wrapped? {
+        try createViewController(token: token, context: nil)
+    }
+
+    func findViewController<Wrapped>(token: T) -> ViewController? where C == Wrapped? {
+        findViewController(token: token, context: nil)
     }
 }
 
 public extension Registry where C == Void {
-    func createViewController(from token: T) -> ViewController? {
-        createViewController(from: token, context: ())
+    func createViewController(token: T) throws -> ViewController {
+        try createViewController(token: token, context: ())
+    }
+
+    func findViewController(token: T) -> ViewController? {
+        findViewController(token: token, context: ())
     }
 }

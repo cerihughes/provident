@@ -31,16 +31,20 @@ class RegistryAPITests: XCTestCase {
         ]
 
         let registry = registrar.registry
-        XCTAssertNil(registry.createViewController(from: "Test"))
-        XCTAssertNil(registry.createViewController(from: "Test", context: ()))
+        XCTAssertThrowsError(try registry.createViewController(token: "Test"))
+        XCTAssertThrowsError(try registry.createViewController(token: "Test", context: ()))
+        XCTAssertNil(registry.findViewController(token: "Test"))
+        XCTAssertNil(registry.findViewController(token: "Test", context: ()))
 
         registrar.resolve(
             serviceProviderFunctions: serviceProviderFunctions,
             viewControllerProviderFunctions: viewControllerProviderFunctions
         )
 
-        XCTAssertNotNil(registry.createViewController(from: "Test"))
-        XCTAssertNotNil(registry.createViewController(from: "Test", context: ()))
+        XCTAssertNotNil(try registry.createViewController(token: "Test"))
+        XCTAssertNotNil(try registry.createViewController(token: "Test", context: ()))
+        XCTAssertNotNil(registry.findViewController(token: "Test"))
+        XCTAssertNotNil(registry.findViewController(token: "Test", context: ()))
     }
 
     func testResolveResolver() {
@@ -53,8 +57,8 @@ class RegistryAPITests: XCTestCase {
         ]
 
         let registry = registrar.registry
-        XCTAssertNil(registry.createViewController(from: "Test"))
-        XCTAssertNil(registry.createViewController(from: "Test", context: ()))
+        XCTAssertThrowsError(try registry.createViewController(token: "Test"))
+        XCTAssertThrowsError(try registry.createViewController(token: "Test", context: ()))
 
         let resolver = TestResolver(
             testServiceProviderFunctions: serviceProviderFunctions,
@@ -62,7 +66,7 @@ class RegistryAPITests: XCTestCase {
         )
         registrar.resolve(resolver: resolver)
 
-        XCTAssertNotNil(registry.createViewController(from: "Test"))
-        XCTAssertNotNil(registry.createViewController(from: "Test", context: ()))
+        XCTAssertNotNil(try registry.createViewController(token: "Test"))
+        XCTAssertNotNil(try registry.createViewController(token: "Test", context: ()))
     }
 }

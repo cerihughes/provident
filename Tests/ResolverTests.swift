@@ -11,12 +11,11 @@ class ResolverTests: XCTestCase {
 
     /// Tests a Resolver implementation that uses the default serviceProviderFunctions and
     /// viewControllerProviderFunctions implementations
-    func testBareMinResolver() {
+    func testBareMinResolver() throws {
         let registrar = Registrar<String, Void>()
         registrar.resolve(resolver: ResolverForTesting())
 
-        let viewController = registrar.registry.createViewController(from: "testBareMinResolver")
-        XCTAssertNil(viewController)
+        XCTAssertThrowsError(try registrar.registry.createViewController(token: "testBareMinResolver"))
     }
 }
 

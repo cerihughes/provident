@@ -24,17 +24,17 @@ class RegistryTests: XCTestCase {
 
     func testRegisterFunction() {
         registry.add(registryFunction: createFunction(limit: 10))
-        XCTAssertNotNil(try registry.createViewController(from: 1))
+        XCTAssertNotNil(try registry.createViewController(token: 1))
     }
 
     func testRegisterFunction_providingContext() {
         registry.add(registryFunction: createFunction(limit: 10))
-        XCTAssertNotNil(try registry.createViewController(from: 1, context: "Things"))
+        XCTAssertNotNil(try registry.createViewController(token: 1, context: "Things"))
     }
 
     func testRegisterFunctionThrows_providingContext() {
         do {
-            let vc = try registry.createViewController(from: 1, context: "Things")
+            let vc = try registry.createViewController(token: 1, context: "Things")
             XCTAssertNil(vc)
         } catch ProvidentError<Int>.noMatchingViewController(let token) {
             XCTAssertEqual(token, 1)
@@ -45,17 +45,17 @@ class RegistryTests: XCTestCase {
 
     func testRegisterFunctionWithContext() {
         registry.add(registryFunction: createFunction(limit: 10))
-        XCTAssertNotNil(try registry.createViewController(from: 1, context: "Things"))
+        XCTAssertNotNil(try registry.createViewController(token: 1, context: "Things"))
     }
 
     func testRegisterFunctionWithContext_withoutProvidingContext() {
         registry.add(registryFunction: createFunction(limit: 10))
-        XCTAssertNotNil(try registry.createViewController(from: 1))
+        XCTAssertNotNil(try registry.createViewController(token: 1))
     }
 
     func testRegisterFunctionWithContextThrows_withoutProvidingContext() {
         do {
-            let vc = try registry.createViewController(from: 1)
+            let vc = try registry.createViewController(token: 1)
             XCTAssertNil(vc)
         } catch ProvidentError<Int>.noMatchingViewController(let token) {
             XCTAssertEqual(token, 1)
@@ -68,7 +68,7 @@ class RegistryTests: XCTestCase {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = try registry.createViewController(from: 1)
+        let vc = try registry.createViewController(token: 1)
         XCTAssertEqual(vc.title, "function 1")
     }
 
@@ -76,7 +76,7 @@ class RegistryTests: XCTestCase {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = try registry.createViewController(from: 1, context: "Things")
+        let vc = try registry.createViewController(token: 1, context: "Things")
         XCTAssertEqual(vc.title, "functionWithContext 1:Things")
     }
 
@@ -84,7 +84,7 @@ class RegistryTests: XCTestCase {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = try registry.createViewController(from: 0)
+        let vc = try registry.createViewController(token: 0)
         XCTAssertEqual(vc.title, "function 0")
     }
 
@@ -92,14 +92,14 @@ class RegistryTests: XCTestCase {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = try registry.createViewController(from: 0, context: "Things")
+        let vc = try registry.createViewController(token: 0, context: "Things")
         XCTAssertEqual(vc.title, "functionWithContext 0:Things")
     }
 
     func testRegisterMixedFunctions_functionsWithContextsReturnFirst() throws {
         registry.add(registryFunction: createFunction(limit: 0))
 
-        let vc = try registry.createViewController(from: 0, context: "Things")
+        let vc = try registry.createViewController(token: 0, context: "Things")
         XCTAssertEqual(vc.title, "functionWithContext 0:Things")
     }
 
@@ -107,7 +107,7 @@ class RegistryTests: XCTestCase {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = try registry.createViewController(from: 0, context: "Things")
+        let vc = try registry.createViewController(token: 0, context: "Things")
         XCTAssertEqual(vc.title, "functionWithContext 0:Things")
     }
 

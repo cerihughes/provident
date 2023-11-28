@@ -15,7 +15,7 @@ class ViewControllerProviderTests: XCTestCase {
         let registrar = Registrar<String, Void>()
         registrar.resolve(resolver: ResolverForTesting())
 
-        let viewController = try registrar.registry.createViewController(from: "testBareMinViewControllerProvider")
+        let viewController = try registrar.registry.createViewController(token: "testBareMinViewControllerProvider")
         XCTAssertEqual(viewController.title, "testBareMinViewControllerProvider")
     }
 }

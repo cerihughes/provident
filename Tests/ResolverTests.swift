@@ -15,7 +15,7 @@ class ResolverTests: XCTestCase {
         let registrar = Registrar<String, Void>()
         registrar.resolve(resolver: ResolverForTesting())
 
-        XCTAssertThrowsError(try registrar.registry.createViewController(from: "testBareMinResolver"))
+        XCTAssertThrowsError(try registrar.registry.createViewController(token: "testBareMinResolver"))
     }
 }
 

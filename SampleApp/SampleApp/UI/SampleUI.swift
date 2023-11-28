@@ -18,7 +18,7 @@ class SampleUI {
         registrar.resolve(resolver: SampleResolver())
     }
 
-    func showInitialUI() throws {
-        try Navigation.login.navigate(using: registrar.registry, from: nil, in: window)
+    func showInitialUI() -> Bool {
+        Navigation.login.navigate(using: registrar.registry, from: nil, in: window)
     }
 }

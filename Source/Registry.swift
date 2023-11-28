@@ -11,7 +11,13 @@ public protocol Registry<T, C>: AnyObject {
     associatedtype T
     associatedtype C
 
-    func createViewController(from token: T, context: C) throws -> ViewController
+    func createViewController(token: T, context: C) throws -> ViewController
+}
+
+public extension Registry {
+    func findViewController(token: T, context: C) -> ViewController? {
+        try? createViewController(token: token, context: context)
+    }
 }
 
 public enum ProvidentError<T>: Error {
@@ -44,7 +50,7 @@ class RegistryImplementation<T, C>: Registry {
         functions.removeAll()
     }
 
-    func createViewController(from token: T, context: C) throws -> ViewController {
+    func createViewController(token: T, context: C) throws -> ViewController {
         for function in functions {
             if let result = function(token, context) {
                 return result
@@ -56,13 +62,21 @@ class RegistryImplementation<T, C>: Registry {
 }
 
 public extension Registry {
-    func createViewController<Wrapped>(from token: T) throws -> ViewController where C == Wrapped? {
-        try createViewController(from: token, context: nil)
+    func createViewController<Wrapped>(token: T) throws -> ViewController where C == Wrapped? {
+        try createViewController(token: token, context: nil)
+    }
+
+    func findViewController<Wrapped>(token: T) -> ViewController? where C == Wrapped? {
+        findViewController(token: token, context: nil)
     }
 }
 
 public extension Registry where C == Void {
-    func createViewController(from token: T) throws -> ViewController {
-        try createViewController(from: token, context: ())
+    func createViewController(token: T) throws -> ViewController {
+        try createViewController(token: token, context: ())
+    }
+
+    func findViewController(token: T) -> ViewController? {
+        findViewController(token: token, context: ())
     }
 }

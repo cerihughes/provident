@@ -24,14 +24,14 @@ class RegistryVoidContextTests: XCTestCase {
 
     func testRegisterFunction() {
         registry.add(registryFunction: createFunction(limit: 10))
-        XCTAssertNotNil(try registry.createViewController(from: 1))
+        XCTAssertNotNil(try registry.createViewController(token: 1))
     }
 
     func testRegisterFunctions_oneIsValid() throws {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = try registry.createViewController(from: 1)
+        let vc = try registry.createViewController(token: 1)
         XCTAssertEqual(vc.title, "function 1")
     }
 
@@ -39,7 +39,7 @@ class RegistryVoidContextTests: XCTestCase {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = try registry.createViewController(from: 0)
+        let vc = try registry.createViewController(token: 0)
         XCTAssertEqual(vc.title, "function 0")
     }
 

@@ -39,7 +39,7 @@ class LogoutViewController: UIViewController {
     private func logoutTapped(sender: UIButton) {
         viewModel.logout { [weak self] in
             guard let self, let window = self.view.window else { return }
-            try? Navigation.login.navigate(using: registry, from: self, in: window)
+            Navigation.login.navigate(using: registry, from: self, in: window)
         }
     }
 }

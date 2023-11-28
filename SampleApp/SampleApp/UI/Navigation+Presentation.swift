@@ -9,15 +9,13 @@ import Provident
 import UIKit
 
 extension Navigation {
-    @discardableResult
     func navigate(
         using registry: AnyRegistry<Navigation, Void>,
         from previous: UIViewController?,
         in window: UIWindow
-    ) -> Bool {
-        guard let viewController = registry.createViewController(from: self) else { return false }
+    ) throws {
+        let viewController = try registry.createViewController(from: self)
         present(viewController: viewController, from: previous, in: window)
-        return true
     }
 
     private func present(viewController: UIViewController, from previous: UIViewController?, in window: UIWindow) {

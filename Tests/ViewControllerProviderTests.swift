@@ -11,13 +11,12 @@ class ViewControllerProviderTests: XCTestCase {
 
     /// Tests a ViewControllerProvider implementation that uses the default register(with:) and configure(with:)
     /// implementations
-    func testBareMinViewControllerProvider() {
+    func testBareMinViewControllerProvider() throws {
         let registrar = Registrar<String, Void>()
         registrar.resolve(resolver: ResolverForTesting())
 
-        let viewController = registrar.registry.createViewController(from: "testBareMinViewControllerProvider")
-        XCTAssertNotNil(viewController)
-        XCTAssertEqual(viewController?.title, "testBareMinViewControllerProvider")
+        let viewController = try registrar.registry.createViewController(from: "testBareMinViewControllerProvider")
+        XCTAssertEqual(viewController.title, "testBareMinViewControllerProvider")
     }
 }
 

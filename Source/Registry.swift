@@ -11,7 +11,11 @@ public protocol Registry<T, C>: AnyObject {
     associatedtype T
     associatedtype C
 
-    func createViewController(from token: T, context: C) -> ViewController?
+    func createViewController(from token: T, context: C) throws -> ViewController
+}
+
+public enum ProvidentError: Error {
+    case noMatchingViewController
 }
 
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to
@@ -40,25 +44,25 @@ class RegistryImplementation<T, C>: Registry {
         functions.removeAll()
     }
 
-    public func createViewController(from token: T, context: C) -> ViewController? {
+    public func createViewController(from token: T, context: C) throws -> ViewController {
         for function in functions {
             if let result = function(token, context) {
                 return result
             }
         }
 
-        return nil
+        throw ProvidentError.noMatchingViewController
     }
 }
 
 public extension Registry {
-    func createViewController<Wrapped>(from token: T) -> ViewController? where C == Wrapped? {
-        createViewController(from: token, context: nil)
+    func createViewController<Wrapped>(from token: T) throws -> ViewController where C == Wrapped? {
+        try createViewController(from: token, context: nil)
     }
 }
 
 public extension Registry where C == Void {
-    func createViewController(from token: T) -> ViewController? {
-        createViewController(from: token, context: ())
+    func createViewController(from token: T) throws -> ViewController {
+        try createViewController(from: token, context: ())
     }
 }

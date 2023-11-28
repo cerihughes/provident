@@ -24,25 +24,23 @@ class RegistryVoidContextTests: XCTestCase {
 
     func testRegisterFunction() {
         registry.add(registryFunction: createFunction(limit: 10))
-        XCTAssertNotNil(registry.createViewController(from: 1))
+        XCTAssertNotNil(try registry.createViewController(from: 1))
     }
 
-    func testRegisterFunctions_oneIsValid() {
+    func testRegisterFunctions_oneIsValid() throws {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = registry.createViewController(from: 1)
-        XCTAssertNotNil(vc)
-        XCTAssertEqual(vc!.title, "function 1")
+        let vc = try registry.createViewController(from: 1)
+        XCTAssertEqual(vc.title, "function 1")
     }
 
-    func testRegisterFunctions_allValid_usesFirstRegistered() {
+    func testRegisterFunctions_allValid_usesFirstRegistered() throws {
         registry.add(registryFunction: createFunction(limit: 0))
         registry.add(registryFunction: createFunction(limit: 1))
 
-        let vc = registry.createViewController(from: 0)
-        XCTAssertNotNil(vc)
-        XCTAssertEqual(vc!.title, "function 0")
+        let vc = try registry.createViewController(from: 0)
+        XCTAssertEqual(vc.title, "function 0")
     }
 
     // MARK: - Test functions

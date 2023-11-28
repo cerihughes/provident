@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         ui = SampleUI(window: window)
         window.makeKeyAndVisible()
-        return ui.showInitialUI()
+        do {
+            try ui.showInitialUI()
+            return true
+        } catch {
+            return false
+        }
     }
 }

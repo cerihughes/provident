@@ -33,6 +33,8 @@ class RegistryAPITests: XCTestCase {
         let registry = registrar.registry
         XCTAssertThrowsError(try registry.createViewController(token: "Test"))
         XCTAssertThrowsError(try registry.createViewController(token: "Test", context: ()))
+        XCTAssertNil(registry.findViewController(token: "Test"))
+        XCTAssertNil(registry.findViewController(token: "Test", context: ()))
 
         registrar.resolve(
             serviceProviderFunctions: serviceProviderFunctions,
@@ -41,6 +43,8 @@ class RegistryAPITests: XCTestCase {
 
         XCTAssertNotNil(try registry.createViewController(token: "Test"))
         XCTAssertNotNil(try registry.createViewController(token: "Test", context: ()))
+        XCTAssertNotNil(registry.findViewController(token: "Test"))
+        XCTAssertNotNil(registry.findViewController(token: "Test", context: ()))
     }
 
     func testResolveResolver() {

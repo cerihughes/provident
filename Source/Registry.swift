@@ -30,21 +30,21 @@ public enum ProvidentError: Error {
 /// VC for the same token, functions that register with a context will return first, and if there are still multiple,
 /// the function that was registered first will return first.
 class RegistryImplementation<T, C>: Registry {
-    public typealias RegistryFunction = (T, C) -> ViewController?
+    typealias RegistryFunction = (T, C) -> ViewController?
 
     private var functions = [RegistryFunction]()
 
-    public init() {}
+    init() {}
 
-    public func add(registryFunction: @escaping RegistryFunction) {
+    func add(registryFunction: @escaping RegistryFunction) {
         functions.append(registryFunction)
     }
 
-    public func reset() {
+    func reset() {
         functions.removeAll()
     }
 
-    public func createViewController(from token: T, context: C) throws -> ViewController {
+    func createViewController(from token: T, context: C) throws -> ViewController {
         for function in functions {
             if let result = function(token, context) {
                 return result

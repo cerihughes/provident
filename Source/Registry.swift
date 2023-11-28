@@ -14,8 +14,8 @@ public protocol Registry<T, C>: AnyObject {
     func createViewController(from token: T, context: C) throws -> ViewController
 }
 
-public enum ProvidentError: Error {
-    case noMatchingViewController
+public enum ProvidentError<T>: Error {
+    case noMatchingViewController(T)
 }
 
 /// A registry that looks up view controllers for a given Token <T>. This token should be a type that is able to
@@ -51,7 +51,7 @@ class RegistryImplementation<T, C>: Registry {
             }
         }
 
-        throw ProvidentError.noMatchingViewController
+        throw ProvidentError.noMatchingViewController(token)
     }
 }
 

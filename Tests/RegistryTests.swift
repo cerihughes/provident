@@ -32,6 +32,17 @@ class RegistryTests: XCTestCase {
         XCTAssertNotNil(try registry.createViewController(from: 1, context: "Things"))
     }
 
+    func testRegisterFunctionThrows_providingContext() {
+        do {
+            let vc = try registry.createViewController(from: 1, context: "Things")
+            XCTAssertNil(vc)
+        } catch ProvidentError<Int>.noMatchingViewController(let token) {
+            XCTAssertEqual(token, 1)
+        } catch {
+            XCTFail("Not expecting a different error")
+        }
+    }
+
     func testRegisterFunctionWithContext() {
         registry.add(registryFunction: createFunction(limit: 10))
         XCTAssertNotNil(try registry.createViewController(from: 1, context: "Things"))
@@ -40,6 +51,17 @@ class RegistryTests: XCTestCase {
     func testRegisterFunctionWithContext_withoutProvidingContext() {
         registry.add(registryFunction: createFunction(limit: 10))
         XCTAssertNotNil(try registry.createViewController(from: 1))
+    }
+
+    func testRegisterFunctionWithContextThrows_withoutProvidingContext() {
+        do {
+            let vc = try registry.createViewController(from: 1)
+            XCTAssertNil(vc)
+        } catch ProvidentError<Int>.noMatchingViewController(let token) {
+            XCTAssertEqual(token, 1)
+        } catch {
+            XCTFail("Not expecting a different error")
+        }
     }
 
     func testRegisterFunctions_oneIsValid() throws {

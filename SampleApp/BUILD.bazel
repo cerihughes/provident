@@ -1,0 +1,23 @@
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+
+swift_library(
+    name = "provident_sample",
+    srcs = glob(["SampleApp/**/*.swift"]),
+    tags = ["manual"],
+    visibility = ["//visibility:private"],
+    deps = ["//Source:provident"],
+)
+
+ios_application(
+    name = "provident_sample_app",
+    bundle_id = "uk.co.cerihughes.provident.sample",
+    families = [
+        "iphone",
+        "ipad",
+    ],
+    infoplists = ["SampleApp/Info.plist"],
+    minimum_os_version = "16.0",
+    visibility = ["//visibility:public"],
+    deps = [":provident_sample"],
+)

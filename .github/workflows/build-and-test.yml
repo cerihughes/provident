@@ -6,7 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        xcode: [14.3.1, 15.0.1]
+        xcode: [14.3.1, 15.4]
         sdk: [iphonesimulator, macosx, appletvsimulator]
         include:
           - name: "iPhone 14"
@@ -20,21 +20,21 @@ jobs:
             xcode: 14.3.1
           - os: "17.0.1"
             sdk: iphonesimulator
-            xcode: 15.0.1
+            xcode: 15.4
           - os: "13.3"
             sdk: macosx
             xcode: 14.3.1
           - os: "14.0"
             sdk: macosx
-            xcode: 15.0.1
+            xcode: 15.4
           - os: "16.4"
             sdk: appletvsimulator
             xcode: 14.3.1
           - os: "17.0"
             sdk: appletvsimulator
-            xcode: 15.0.1
+            xcode: 15.4
 
-    runs-on: macos-13
+    runs-on: macos-14
 
     steps:
       # Xcode select
